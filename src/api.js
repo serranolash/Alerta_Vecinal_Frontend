@@ -1,9 +1,8 @@
 // src/api.js
 
 // Base de la API (env o localhost)
-export const API_BASE =
-  import.meta.env.VITE_API_BASE ||
-  `${window.location.protocol}//${window.location.hostname}:5000`;
+// src/api.js
+export const API_BASE = "https://alertavecinal-production.up.railway.app"
 
 // Función genérica para pedir a la API
 async function request(path, options = {}) {
