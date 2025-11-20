@@ -51,7 +51,9 @@ export function AdminReportTable({ reports, onChangeStatus, onViewTrack }) {
               {/* Descripción + análisis IA */}
               <td>
                 <div className="admin-report-desc">
-                  <div className="admin-report-text">{r.description || '—'}</div>
+                  <div className="admin-report-text">
+                    {r.description || '—'}
+                  </div>
                   {r.ai_raw_summary && (
                     <div className="admin-report-ai">
                       <strong>Análisis IA:</strong> {r.ai_raw_summary}
@@ -67,7 +69,6 @@ export function AdminReportTable({ reports, onChangeStatus, onViewTrack }) {
                     Riesgo: {r.risk_level || 'bajo'}
                   </span>
 
-                  {/* Banderitas de IA */}
                   {r.weapon_detected && (
                     <div className="risk-flag">Arma detectada por IA</div>
                   )}
@@ -86,7 +87,7 @@ export function AdminReportTable({ reports, onChangeStatus, onViewTrack }) {
                 </div>
               </td>
 
-              {/* Geolocalización + mapa + imagen */}
+              {/* Ubicación + imagen */}
               <td>
                 <div className="admin-report-location">
                   {typeof r.latitude === 'number' &&
@@ -112,10 +113,15 @@ export function AdminReportTable({ reports, onChangeStatus, onViewTrack }) {
                     )}
 
                   {r.image_path ? (
-                    <div className="admin-report-image-link" style={{ marginTop: 4 }}>
+                    <div
+                      className="admin-report-image-link"
+                      style={{ marginTop: 4 }}
+                    >
                       <a
                         className="link"
                         href={`${API_BASE}${r.image_path}`}
+                        target="_blank"
+                        rel="noreferrer"
                       >
                         Ver imagen
                       </a>
@@ -128,11 +134,13 @@ export function AdminReportTable({ reports, onChangeStatus, onViewTrack }) {
                 </div>
               </td>
 
-              {/* Extras (armas, vehículo, patente) */}
+              {/* Extras */}
               <td>
                 {r.has_weapon && <span className="badge-danger">Arma</span>}{' '}
                 {r.has_vehicle && <span className="badge-neutral">Vehículo</span>}{' '}
-                {r.plate_text && <span className="badge-plate">{r.plate_text}</span>}
+                {r.plate_text && (
+                  <span className="badge-plate">{r.plate_text}</span>
+                )}
               </td>
 
               {/* Acciones */}
@@ -151,11 +159,12 @@ export function AdminReportTable({ reports, onChangeStatus, onViewTrack }) {
                     Falso
                   </button>
 
-                  {/* 🆕 Botón para ver ruta de escape / tracking */}
+                  {/* 🆕 Ver ruta (solo si nos pasaron el handler) */}
                   {onViewTrack && (
                     <button
                       className="btn-small btn-track"
                       onClick={() => onViewTrack(r)}
+                      style={{ marginTop: 4 }}
                     >
                       Ver ruta
                     </button>
