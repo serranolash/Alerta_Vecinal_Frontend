@@ -1,11 +1,10 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import { CitizenApp } from './routes/CitizenApp'
-import { AdminPanel } from './routes/AdminPanel'
 import { Logo } from './components/Logo'
 import LandingPage from './components/LandingPage'
 import AdminMap from './components/AdminMap'
-
+import AdminArea from './pages/AdminArea' // 🆕 nuevo import
 
 export default function App() {
   return (
@@ -32,9 +31,10 @@ export default function App() {
           </div>
         </header>
 
-        <Routes>          
+        <Routes>
           <Route path="/app" element={<CitizenApp />} />
-          <Route path="/admin" element={<AdminPanel />} />
+          {/* 🆕 ahora /admin usa AdminArea */}
+          <Route path="/admin" element={<AdminArea />} />
           <Route path="/admin/mapa" element={<AdminMap />} />
           <Route path="/" element={<LandingPage />} />
         </Routes>

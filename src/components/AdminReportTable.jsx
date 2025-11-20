@@ -14,7 +14,7 @@ const getRiskBadgeClass = (risk) => {
   }
 }
 
-export function AdminReportTable({ reports, onChangeStatus }) {
+export function AdminReportTable({ reports, onChangeStatus, onViewTrack }) {
   if (!reports || reports.length === 0) {
     return <p className="muted">No hay reportes para este filtro.</p>
   }
@@ -86,7 +86,7 @@ export function AdminReportTable({ reports, onChangeStatus }) {
                 </div>
               </td>
 
-              {/* Geolocalización + mapa + imagen (ajustado “a la antigua”) */}
+              {/* Geolocalización + mapa + imagen */}
               <td>
                 <div className="admin-report-location">
                   {typeof r.latitude === 'number' &&
@@ -111,13 +111,11 @@ export function AdminReportTable({ reports, onChangeStatus }) {
                       </>
                     )}
 
-                  {/* 👇 Enlace directo, sin window.open raro ni about:blank */}
                   {r.image_path ? (
                     <div className="admin-report-image-link" style={{ marginTop: 4 }}>
                       <a
                         className="link"
                         href={`${API_BASE}${r.image_path}`}
-                        
                       >
                         Ver imagen
                       </a>
@@ -152,6 +150,16 @@ export function AdminReportTable({ reports, onChangeStatus }) {
                   >
                     Falso
                   </button>
+
+                  {/* 🆕 Botón para ver ruta de escape / tracking */}
+                  {onViewTrack && (
+                    <button
+                      className="btn-small btn-track"
+                      onClick={() => onViewTrack(r)}
+                    >
+                      Ver ruta
+                    </button>
+                  )}
                 </div>
               </td>
             </tr>
