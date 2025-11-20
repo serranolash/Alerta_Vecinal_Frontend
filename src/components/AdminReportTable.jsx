@@ -162,9 +162,8 @@ export function AdminReportTable({ reports, onChangeStatus, onViewTrack }) {
                   {/* 🆕 Ver ruta (solo si nos pasaron el handler) */}
                   {onViewTrack && (
                     <button
-                      className="btn-small btn-track"
-                      onClick={() => onViewTrack(r)}
-                      style={{ marginTop: 4 }}
+                      className="btn-small btn-secondary"
+                      onClick={() => onViewTrack && onViewTrack(r)}
                     >
                       Ver ruta
                     </button>

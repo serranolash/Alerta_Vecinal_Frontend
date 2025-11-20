@@ -1,64 +1,99 @@
-import React, { useEffect, useState } from 'react'
-import { api } from '../api'
-import { AdminReportTable } from '../components/AdminReportTable'
+// src/routes/AdminPanel.jsx
+import React, { useEffect, useState } from "react";
+import { AdminReportTable } from "../components/AdminReportTable";
+import { api } from "../api";
+import { TrackViewer } from "../components/TrackViewer";
 
 export function AdminPanel() {
-  const [reports, setReports] = useState([])
-  const [statusFilter, setStatusFilter] = useState('pendiente')
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
+  const [reports, setReports] = useState([]);
+  const [statusFilter, setStatusFilter] = useState("todos");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [trackReport, setTrackReport] = useState(null); // 🆕 reporte seleccionado para ver ruta
 
   const loadReports = async () => {
-    setLoading(true)
-    setError('')
+    setLoading(true);
+    setError("");
     try {
-      const data = await api.adminListReports({ status: statusFilter || undefined })
-      setReports(data.items || [])
+      const data = await api.listReports({
+        status: statusFilter === "todos" ? null : statusFilter,
+        limit: 50,
+      });
+      const items = data.items || data.data || data.reports || [];
+      setReports(items);
     } catch (err) {
-      console.error(err)
-      setError(err.message || 'Error cargando reportes')
+      console.error("[AdminPanel] Error cargando reportes:", err);
+      setError("No se pudieron cargar los reportes.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
-    loadReports()
-  }, [statusFilter])
+    loadReports();
+  }, [statusFilter]);
 
-  const handleChangeStatus = async (id, status) => {
+  const handleChangeStatus = async (id, newStatus) => {
     try {
-      await api.adminChangeStatus(id, status)
-      await loadReports()
+      await api.changeStatus(id, newStatus);
+      await loadReports();
     } catch (err) {
-      console.error(err)
-      setError(err.message || 'Error cambiando estado')
+      console.error("[AdminPanel] Error cambiando estado:", err);
+      alert("No se pudo actualizar el estado del reporte.");
     }
-  }
+  };
 
   return (
-    <main className="app-main single-column">
-      <section className="card">
-        <div className="card-header">
-          <h2>Panel de autoridades</h2>
-          <select
-            className="status-filter"
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-          >
-            <option value="pendiente">Pendientes</option>
-            <option value="verificado">Verificados</option>
-            <option value="falso">Marcados como falso</option>
-            <option value="">Todos</option>
-          </select>
+    <main className="admin-page">
+      <section className="admin-section">
+        <header className="admin-page-header">
+          <h1>Panel de autoridades</h1>
+          <p className="muted">
+            Visualizá los reportes en tiempo real, filtrá por estado y revisá
+            la información que envían los vecinos.
+          </p>
+        </header>
+
+        <div className="admin-filters">
+          <label>
+            Filtrar por estado:&nbsp;
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+            >
+              <option value="todos">Todos</option>
+              <option value="pendiente">Pendiente</option>
+              <option value="verificado">Verificado</option>
+              <option value="falso">Falso</option>
+            </select>
+          </label>
+          <button type="button" className="btn-secondary" onClick={loadReports}>
+            Actualizar
+          </button>
         </div>
-        <p className="muted">
-          Este panel muestra las alertas enviadas por la comunidad. Podés marcarlas como{' '}
-          <strong>verificadas</strong> o <strong>falsas</strong> para mejorar la confianza del sistema.
-        </p>
+
+        {loading && <p>Cargando reportes...</p>}
         {error && <p className="error">{error}</p>}
-        {loading ? <p>Cargando...</p> : <AdminReportTable reports={reports} onChangeStatus={handleChangeStatus} />}
+
+        {!loading && !error && (
+          <AdminReportTable
+            reports={reports}
+            onChangeStatus={handleChangeStatus}
+            // 🆕 cuando el admin hace clic en "Ver ruta"
+            onViewTrack={(report) => setTrackReport(report)}
+          />
+        )}
       </section>
+
+      {/* 🆕 Modal de ruta de escape */}
+      {trackReport && (
+        <TrackViewer
+          report={trackReport}
+          onClose={() => setTrackReport(null)}
+        />
+      )}
     </main>
-  )
+  );
 }
+
+export default AdminPanel;
