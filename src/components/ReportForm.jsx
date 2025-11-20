@@ -1,3 +1,4 @@
+// src/components/ReportForm.jsx
 import React, { useState, useEffect } from 'react'
 import { api } from '../api'
 
@@ -18,6 +19,13 @@ export function ReportForm({ onReportCreated }) {
   const [status, setStatus] = useState('idle')
   const [error, setError] = useState('')
   const [allowFallback, setAllowFallback] = useState(false)
+
+  // 🆕 estados para tracking / ruta de escape
+  const [lastReportId, setLastReportId] = useState(null)
+  const [trackingActive, setTrackingActive] = useState(false)
+  const [watchId, setWatchId] = useState(null)
+  const [trackError, setTrackError] = useState('')
+  const [pointsSent, setPointsSent] = useState(0)
 
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -50,7 +58,7 @@ export function ReportForm({ onReportCreated }) {
 
     setStatus('sending')
     try {
-      await api.createReport({
+      const resp = await api.createReport({
         report_type: reportType,
         description,
         latitude: coords.lat,
@@ -58,6 +66,16 @@ export function ReportForm({ onReportCreated }) {
         image: imageFile,
         plate_text: plate,
       })
+
+      // 🆕 guardar ID del reporte creado para la ruta de escape
+      const reportId = resp.report?.id
+      if (reportId) {
+        setLastReportId(reportId)
+        setTrackingActive(false)
+        setPointsSent(0)
+        setTrackError('')
+      }
+
       setStatus('success')
       setDescription('')
       setImageFile(null)
@@ -67,9 +85,60 @@ export function ReportForm({ onReportCreated }) {
       console.error(err)
       setError(err.message || 'Error al enviar el reporte')
       setStatus('error')
-    } finally {
-      setTimeout(() => setStatus('idle'), 2500)
     }
+    // 🔁 Quité el setTimeout que reseteaba a 'idle' para que no se pierda el panel de tracking
+  }
+
+  // 🆕 empezar a enviar puntos de ruta
+  const startTracking = () => {
+    if (!lastReportId) {
+      setTrackError('No hay un reporte reciente para asociar la ruta.')
+      return
+    }
+
+    if (!navigator.geolocation) {
+      setTrackError('Tu dispositivo no soporta geolocalización.')
+      return
+    }
+
+    setTrackError('')
+    setTrackingActive(true)
+
+    const id = navigator.geolocation.watchPosition(
+      async (pos) => {
+        try {
+          await api.sendTrackPoint(lastReportId, {
+            latitude: pos.coords.latitude,
+            longitude: pos.coords.longitude,
+          })
+          setPointsSent((n) => n + 1)
+        } catch (err) {
+          console.error(err)
+          setTrackError('Error enviando punto de ruta.')
+        }
+      },
+      (err) => {
+        console.error(err)
+        setTrackError('No se pudo seguir tu ubicación. Revisá permisos del GPS.')
+        setTrackingActive(false)
+      },
+      {
+        enableHighAccuracy: true,
+        maximumAge: 5000,
+        timeout: 10000,
+      }
+    )
+
+    setWatchId(id)
+  }
+
+  // 🆕 detener seguimiento
+  const stopTracking = () => {
+    if (watchId !== null) {
+      navigator.geolocation.clearWatch(watchId)
+    }
+    setWatchId(null)
+    setTrackingActive(false)
   }
 
   return (
@@ -151,7 +220,43 @@ export function ReportForm({ onReportCreated }) {
         {status === 'sending' ? 'Enviando...' : 'Enviar alerta'}
       </button>
 
-      {status === 'success' && <p className="success">✅ Alerta enviada</p>}
+      {status === 'success' && (
+        <>
+          <p className="success">✅ Alerta enviada</p>
+
+          {lastReportId && !trackingActive && (
+            <div className="tracker-panel">
+              <p className="muted">
+                Si es seguro, podés registrar la ruta de escape (tu trayectoria o la del sospechoso a distancia).
+              </p>
+              <button
+                type="button"
+                className="btn-secondary"
+                onClick={startTracking}
+              >
+                Comenzar seguimiento
+              </button>
+            </div>
+          )}
+
+          {trackingActive && (
+            <div className="tracker-panel">
+              <p className="muted">
+                Seguimiento activo. Puntos enviados: {pointsSent}.
+                Podés detenerlo cuando quieras.
+              </p>
+              {trackError && <p className="error">{trackError}</p>}
+              <button
+                type="button"
+                className="btn-secondary"
+                onClick={stopTracking}
+              >
+                Detener seguimiento
+              </button>
+            </div>
+          )}
+        </>
+      )}
     </form>
   )
 }

@@ -1,8 +1,7 @@
 // src/api.js
 
-// Base de la API (env o localhost)
-// src/api.js
-export const API_BASE = "https://alertavecinal-production.up.railway.app"
+// Base de la API (env o prod)
+export const API_BASE = "https://alertavecinal-production.up.railway.app";
 
 // Función genérica para pedir a la API
 async function request(path, options = {}) {
@@ -63,7 +62,7 @@ export const api = {
     return request(`/api/reports/nearby?${params.toString()}`, { method: "GET" });
   },
 
-  // Enviar punto de tracking para un reporte (seguimiento en mapa)
+  // Enviar punto de tracking para un reporte (seguimiento en mapa / ruta de escape)
   async sendTrackPoint(reportId, { latitude, longitude }) {
     return request(`/api/reports/${reportId}/track`, {
       method: "POST",
@@ -71,7 +70,7 @@ export const api = {
     });
   },
 
-  // Obtener trazado de un reporte
+  // Obtener el trazado completo de un reporte (lista de puntos)
   async getTrack(reportId) {
     return request(`/api/reports/${reportId}/track`, { method: "GET" });
   },
