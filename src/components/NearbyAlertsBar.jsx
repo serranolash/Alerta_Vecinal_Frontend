@@ -40,7 +40,8 @@ export function NearbyAlertsBar() {
           lng: coords.lng,
           radius_km: radiusKm,
         })
-        const items = data.items || []
+        // 👇 ahora soporta diferentes formatos de respuesta
+        const items = data.items || data.data || data.reports || []
 
         // Tomamos solo las de últimos 20 minutos aprox.
         const now = Date.now()
@@ -79,34 +80,32 @@ export function NearbyAlertsBar() {
   return (
     <div className="nearby-bar">
       <div className="nearby-header">
-        <div>
-          <strong>Alertas cercanas</strong>{' '}
-          <span className="nearby-radius">
-            Radio: {radiusKm === 0.5 ? '500 m' : '1 km'}
-          </span>
-          {error && <span className="nearby-error"> · {error}</span>}
-        </div>
-        <div className="nearby-controls">
-          <select
-            value={radiusKm}
-            onChange={(e) => setRadiusKm(parseFloat(e.target.value))}
-          >
-            <option value={0.5}>500 m</option>
-            <option value={1}>1 km</option>
-          </select>
-          <button
-            type="button"
-            className="btn-small"
-            onClick={() => setEnabled((v) => !v)}
-          >
-            {enabled ? 'Pausar' : 'Reanudar'}
-          </button>
-        </div>
+        <label className="nearby-switch">
+          <input
+            type="checkbox"
+            checked={enabled}
+            onChange={(e) => setEnabled(e.target.checked)}
+          />
+          <span>Alertas cercanas activas</span>
+        </label>
+
+        <select
+          className="nearby-select"
+          value={radiusKm}
+          onChange={(e) => setRadiusKm(Number(e.target.value))}
+        >
+          <option value={0.5}>500 m</option>
+          <option value={1}>1 km</option>
+        </select>
       </div>
 
-      {alerts.length === 0 ? (
+      {error && <p className="nearby-error">{error}</p>}
+
+      {!error && alerts.length === 0 && (
         <p className="nearby-empty">No hay nuevas alertas en tu radio por ahora.</p>
-      ) : (
+      )}
+
+      {!error && alerts.length > 0 && (
         <ul className="nearby-list">
           {alerts.map((r) => (
             <li key={r.id} className="nearby-item">
