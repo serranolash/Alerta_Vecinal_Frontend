@@ -2,10 +2,12 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import { CitizenApp } from './routes/CitizenApp'
-import { AdminPanel } from './routes/AdminPanel'   // 👈 usamos AdminPanel otra vez
+import { AdminPanel } from './routes/AdminPanel'
 import { Logo } from './components/Logo'
 import LandingPage from './components/LandingPage'
 import AdminMap from './components/AdminMap'
+import NeighborhoodNews from './routes/NeighborhoodNews'
+import HelpDirectory from './routes/HelpDirectory'
 
 export default function App() {
   return (
@@ -15,7 +17,7 @@ export default function App() {
           <div className="brand">
             <Logo />
             <div className="brand-text">
-              <h1>AlertaVecinal</h1>
+              <h1>ALERTAVECINAL</h1>
               <p>Red comunitaria de emergencias en tiempo real</p>
             </div>
             <nav className="nav-links">
@@ -24,6 +26,12 @@ export default function App() {
               </Link>
               <Link to="/app" className="nav-link">
                 App
+              </Link>
+              <Link to="/barrio" className="nav-link">
+                Barrio
+              </Link>
+              <Link to="/directorio" className="nav-link">
+                Directorio
               </Link>
               <Link to="/admin" className="nav-link">
                 Autoridades
@@ -34,13 +42,15 @@ export default function App() {
 
         <Routes>
           <Route path="/app" element={<CitizenApp />} />
-          <Route path="/admin" element={<AdminPanel />} />   {/* 👈 volvemos a AdminPanel */}
+          <Route path="/barrio" element={<NeighborhoodNews />} />
+          <Route path="/directorio" element={<HelpDirectory />} />
+          <Route path="/admin" element={<AdminPanel />} />
           <Route path="/admin/mapa" element={<AdminMap />} />
           <Route path="/" element={<LandingPage />} />
         </Routes>
 
         <footer className="app-footer">
-          <small>AlertaVecinal v2.0 · MVP PWA · Diseñado por Alex &amp; ChatGPT</small>
+          <small>AlertaVecinal v2.1 · MVP PWA · IA + comunidad · Diseñado para pilotos reales</small>
         </footer>
       </div>
     </BrowserRouter>
