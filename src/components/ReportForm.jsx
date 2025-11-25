@@ -27,6 +27,12 @@ export function ReportForm({ onReportCreated }) {
   const [trackError, setTrackError] = useState('')
   const [pointsSent, setPointsSent] = useState(0)
 
+  // 🆕 detectar si estamos en entorno de desarrollo (para permitir BA como ejemplo SOLO en dev)
+  const isDev =
+    typeof window !== 'undefined' &&
+    (window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1')
+
   useEffect(() => {
     if (!navigator.geolocation) {
       setError('Tu dispositivo no permite geolocalización.')
@@ -41,8 +47,13 @@ export function ReportForm({ onReportCreated }) {
         })
       },
       () => {
-        setError('No se pudo obtener la ubicación automática.')
+        setError('No se pudo obtener la ubicación automática. Revisá permisos del GPS.')
         setAllowFallback(true)
+      },
+      {
+        enableHighAccuracy: true,
+        maximumAge: 5000,
+        timeout: 10000,
       }
     )
   }, [])
@@ -86,7 +97,7 @@ export function ReportForm({ onReportCreated }) {
       setError(err.message || 'Error al enviar el reporte')
       setStatus('error')
     }
-    // 🔁 Quité el setTimeout que reseteaba a 'idle' para que no se pierda el panel de tracking
+    // 🔁 sin setTimeout para que no se pierda el panel de tracking
   }
 
   // 🆕 empezar a enviar puntos de ruta
@@ -196,22 +207,23 @@ export function ReportForm({ onReportCreated }) {
 
       {error && <p className="error">{error}</p>}
 
-      {allowFallback && !coords.lat && (
+      {/* Fallback SOLO visible en entorno de desarrollo (para pruebas locales) */}
+      {allowFallback && !coords.lat && isDev && (
         <div className="fallback-location">
           <p className="muted">
-            Para pruebas desde el celular, podés usar una ubicación aproximada de ejemplo (no precisa).
+            (DEV) Para pruebas desde el celular en local, podés usar una ubicación de ejemplo.
           </p>
           <button
             type="button"
             className="btn-secondary"
             onClick={() =>
               setCoords({
-                lat: -34.6037, // Buenos Aires centro (ejemplo)
+                lat: -34.6037, // Buenos Aires centro (ejemplo SOLO DEV)
                 lng: -58.3816,
               })
             }
           >
-            Usar ubicación de ejemplo
+            Usar ubicación de ejemplo (Buenos Aires)
           </button>
         </div>
       )}
