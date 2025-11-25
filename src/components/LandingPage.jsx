@@ -10,10 +10,10 @@ export default function LandingPage() {
         <section className="landing-hero">
           <div className="landing-hero-text">
             <h1>Alerta Vecinal</h1>
-            <h2>La seguridad del futuro, en tu bolsillo.</h2>
+            <h2>Seguridad vecinal + comunidad inteligente.</h2>
             <p>
-              Reportes en 3 segundos. IA que detecta riesgo. Un mapa vivo de lo que pasa en tu
-              barrio, en tiempo real.
+              Reportes en 3 segundos, IA que detecta riesgo, mapa de incidentes y muro vecinal
+              para saber qué pasa en tu barrio, en tiempo real.
             </p>
             <div className="landing-hero-actions">
               <Link to="/app" className="btn btn-primary">
@@ -24,108 +24,183 @@ export default function LandingPage() {
               </Link>
             </div>
             <p className="landing-hero-note">
-              Versión MVP v3.0 — ideal para demo a municipios, policías y seguridad privada.
+              MVP listo para pilotos reales · PWA + IA de visión · Rutas de escape · Mapa de
+              calor de incidentes.
             </p>
           </div>
 
           <div className="landing-hero-mockup">
-            <div className="phone-mockup">
+            <div className="phone-frame">
+              <div className="phone-notch" />
               <div className="phone-screen">
-                <div className="phone-header">Reporte de emergencia</div>
-                <div className="phone-body">
-                  <div className="phone-map-skeleton" />
-                  <div className="phone-card">
-                    <div className="phone-chip phone-chip-red">Riesgo alto</div>
-                    <p>Dos hombres en moto con arma, robo de celular.</p>
-                    <div className="phone-meta">
-                      <span>⚠ Zona caliente</span>
-                      <span>⏱ Hace 2 min</span>
-                    </div>
-                  </div>
+                <div className="phone-status-bar">
+                  <span>08:32</span>
+                  <span>LTE ● ● ●</span>
                 </div>
+                <div className="phone-pill">
+                  <span>ALERTA VECINAL</span>
+                </div>
+                <div className="phone-alert-header">
+                  <div className="phone-alert-header-title">Robo en proceso</div>
+                  <div className="phone-alert-header-badge">Riesgo alto</div>
+                </div>
+                <div className="phone-alert-body">
+                  Moto roja, 2 personas, arma a la vista. Vecino reportando a 120 m de tu
+                  ubicación.
+                </div>
+                <div className="phone-map-preview" />
               </div>
             </div>
-            <p className="landing-hero-caption">
-              Mockup ilustrativo de la app móvil con IA de riesgo y geolocalización.
-            </p>
           </div>
         </section>
 
         {/* CÓMO FUNCIONA */}
         <section className="landing-section">
-          <h3>¿Cómo funciona?</h3>
-          <ol className="landing-howto">
-            <li>
-              <strong>El ciudadano reporta en 3 segundos.</strong> Toma una foto, la app captura
-              ubicación automática y escribe una descripción corta.
-            </li>
-            <li>
-              <strong>La IA analiza y clasifica el riesgo.</strong> Detecta palabras clave de robo,
-              arma, violencia, secuestro y vehículo para marcar el incidente como alto, medio o
-              bajo.
-            </li>
-            <li>
-              <strong>El mapa se actualiza en tiempo real.</strong> Los reportes aparecen con pines
-              de colores y zonas calientes donde se concentra el riesgo.
-            </li>
-            <li>
-              <strong>Las autoridades priorizan y actúan.</strong> Ven riesgo, distancia, foto de
-              evidencia y link directo a Google Maps para llegar al lugar.
-            </li>
-          </ol>
+          <div className="landing-section-header">
+            <h3>Cómo funciona</h3>
+            <p>
+              Ciudadanos reportan. IA analiza. Autoridades y vecinos ven todo en un único mapa,
+              con contexto y prioridad.
+            </p>
+          </div>
+
+          <div className="feature-grid">
+            <div className="feature-card">
+              <h5>1. Reporte ciudadano</h5>
+              <h4>Alertas en 3 segundos</h4>
+              <p>
+                El vecino saca una foto, escribe dos líneas y envía. La app toma ubicación,
+                fecha y hora automáticamente.
+              </p>
+            </div>
+            <div className="feature-card">
+              <h5>2. IA + mapa</h5>
+              <h4>Análisis y mapa de incidentes</h4>
+              <p>
+                IA evalúa riesgo, detecta armas y lee patentes. Todo se vuelca en un mapa vivo
+                con zonas calientes, tipo SoSafe.
+              </p>
+            </div>
+            <div className="feature-card">
+              <h5>3. Acción coordinada</h5>
+              <h4>Autoridades y vecinos sincronizados</h4>
+              <p>
+                Policía, municipio y comunidad comparten la misma información: incidentes,
+                reincidencias por patente y rutas de escape.
+              </p>
+            </div>
+          </div>
         </section>
 
         {/* PARA QUIÉN ES */}
         <section className="landing-section">
-          <div className="landing-grid">
-            <div className="landing-card">
-              <h3>Para ciudadanos</h3>
+          <div className="landing-section-header">
+            <h3>Para quién es</h3>
+            <p>
+              AlertaVecinal está pensada para vecinos, municipios, fuerzas de seguridad e
+              inversores que buscan una solución escalable.
+            </p>
+          </div>
+
+          <div className="feature-grid">
+            <div className="feature-card">
+              <h5>Para vecinos</h5>
+              <h4>Seguridad y comunidad</h4>
               <ul>
-                <li>✅ Sentirse acompañados ante robos y emergencias.</li>
-                <li>✅ Saber qué pasa en el barrio en tiempo real.</li>
-                <li>✅ Alertas inteligentes según zona y horario.</li>
+                <li>✅ Sentirse acompañados ante robos, ruidos extraños y emergencias.</li>
+                <li>
+                  ✅ Ver qué pasa en tu barrio en tiempo real (mapa de incidentes y zonas
+                  calientes).
+                </li>
+                <li>
+                  ✅ Nuevo: muro vecinal y directorio de ayuda con teléfonos de emergencia y
+                  servicios de confianza (gasistas, electricistas, técnicos, etc.).
+                </li>
               </ul>
             </div>
-            <div className="landing-card">
-              <h3>Para autoridades</h3>
+
+            <div className="feature-card">
+              <h5>Para municipios y fuerzas de seguridad</h5>
+              <h4>Visión centralizada del territorio</h4>
               <ul>
-                <li>✅ Mapa unificado de incidentes con IA.</li>
-                <li>✅ Priorización de casos por riesgo y ubicación.</li>
-                <li>✅ Evidencias listas para actuar (foto + ubicación + narrativa).</li>
+                <li>
+                  ✅ Mapa unificado de incidentes con IA + mapa de calor estilo SoSafe para
+                  detectar puntos rojos.
+                </li>
+                <li>
+                  ✅ Priorización de casos por riesgo, ubicación, patentes reincidentes y rutas
+                  de escape.
+                </li>
+                <li>
+                  ✅ Evidencias listas para actuar (foto + ubicación + narrativa) y panel para
+                  coordinar recursos.
+                </li>
               </ul>
             </div>
-            <div className="landing-card">
-              <h3>Para inversores</h3>
+
+            <div className="feature-card">
+              <h5>Para inversores</h5>
+              <h4>Producto con camino a SaaS + hardware</h4>
               <ul>
-                <li>✅ MVP funcionando con PWA, IA y mapa.</li>
-                <li>✅ Roadmap claro a video, IA de visión y expansión nacional.</li>
-                <li>✅ Modelo B2G + B2B: municipios y seguridad privada.</li>
+                <li>
+                  ✅ MVP funcionando con PWA, IA, mapa y ruta de escape en tiempo real.
+                </li>
+                <li>
+                  ✅ Roadmap claro a cámaras conectadas, IA de visión propia y expansión
+                  regional.
+                </li>
+                <li>
+                  ✅ Módulos monetizables: licencias para municipios, barrios privados,
+                  consorcios y venta de kits de cámaras integradas.
+                </li>
               </ul>
             </div>
           </div>
         </section>
 
-        {/* DEMO CTA */}
-        <section className="landing-section landing-demo">
-          <h3>Ver la app en acción</h3>
-          <p>
-            Probá la app desde el lado del ciudadano o explorá el panel de autoridades con mapa en
-            tiempo real y clasificación automática de riesgo.
-          </p>
-          <div className="landing-hero-actions">
-            <Link to="/app" className="btn btn-primary">
-              Abrir app ciudadana
-            </Link>
-            <Link to="/admin/mapa" className="btn btn-outline">
-              Ver mapa de incidentes
-            </Link>
+        {/* DEMO / LLAMADO A ACCIÓN */}
+        <section className="landing-section">
+          <div className="landing-section-header">
+            <h3>Listo para un piloto real</h3>
+            <p>
+              Podemos arrancar con un barrio, un municipio o un consorcio y medir impacto en
+              menos de 30 días.
+            </p>
+          </div>
+
+          <div className="demo-cta">
+            <div className="demo-info">
+              <p>
+                • Reportes ciudadanos con foto + ubicación + IA de riesgo.<br />
+                • Mapa de incidentes, zonas calientes y rutas de escape.<br />
+                • Panel de autoridades con filtro por patentes y reincidencias.
+              </p>
+              <p>
+                Próximos módulos: muro vecinal, directorio de servicios del barrio, cámaras IP
+                integradas y tablero analítico de delitos.
+              </p>
+              <div className="demo-metrics">
+                <div className="demo-metric">PWA lista para usar</div>
+                <div className="demo-metric">Backend Flask + PostgreSQL</div>
+                <div className="demo-metric">IA de visión conectada</div>
+              </div>
+            </div>
+
+            <div>
+              <p className="muted" style={{ marginBottom: '0.4rem' }}>
+                ¿Querés ver el producto en acción?
+              </p>
+              <div className="landing-hero-actions">
+                <Link to="/app" className="btn btn-primary">
+                  Abrir demo ciudadana
+                </Link>
+                <Link to="/admin" className="btn btn-outline">
+                  Abrir panel de autoridades
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
-
-        {/* FOOTER */}
-        <footer className="landing-footer">
-          <p>Alerta Vecinal · MVP v3.0 · IA + geolocalización · Listo para pilotos reales.</p>
-        </footer>
       </div>
     </div>
   )
