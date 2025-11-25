@@ -9,6 +9,7 @@ import AdminMap from './components/AdminMap'
 import NeighborhoodNews from './routes/NeighborhoodNews'
 import HelpDirectory from './routes/HelpDirectory'
 import { HseqReportApp } from './routes/HseqReportApp'
+import HseqDashboard from './routes/HseqDashboard'
 
 
 export default function App() {
