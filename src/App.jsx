@@ -39,6 +39,9 @@ export default function App() {
               <Link to="/admin" className="nav-link">
                 Autoridades
               </Link>
+               <Link to="/hseq" className="nav-link">
+               HSEQ
+               </Link>
             </nav>
           </div>
         </header>
