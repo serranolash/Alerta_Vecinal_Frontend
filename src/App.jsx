@@ -50,7 +50,7 @@ export default function App() {
         </Routes>
 
         <footer className="app-footer">
-          <small>AlertaVecinal v2.1 · MVP PWA · IA + comunidad · Diseñado para pilotos reales</small>
+          <small>AlertaVecinal v2.1 · MVP PWA · IA + comunidad · Diseñado para pilotos reales Desarrollado Por Ing Alex Serrano</small>
         </footer>
       </div>
     </BrowserRouter>
