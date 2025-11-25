@@ -184,7 +184,7 @@ textarea {
   resize: vertical;
 }
 
-/* BOTONES */
+/* BOTONES GENERALES */
 
 .btn {
   display: inline-flex;
@@ -304,72 +304,271 @@ textarea {
   font-size: 0.8rem;
 }
 
-/* TABLA ADMIN */
+/* =========================
+   PANEL AUTORIDADES (ADMIN)
+   ========================= */
+
+.admin-page {
+  padding: 2.5rem 0 3rem;
+  display: flex;
+  justify-content: center;
+}
 
 .admin-section {
-  display: block;
+  width: 100%;
+  max-width: 1180px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 24px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.15);
+  padding: 1.75rem 2rem 2.25rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
 }
 
 .admin-page-header {
-  margin-bottom: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
 }
 
+.admin-page-header h1 {
+  font-size: 1.6rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #0f172a;
+}
+
+.admin-page-header .muted {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+/* Filtros superiores */
+
+.admin-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #eef2ff, #e0f2fe);
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+}
+
+.admin-filters label {
+  font-size: 0.9rem;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.admin-filters select,
+.admin-filters input[type='text'] {
+  font-size: 0.9rem;
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid #cbd5f5;
+  background: #ffffff;
+}
+
+/* Botones (scopeados a admin para no romper otros) */
+
+.admin-section .btn-secondary {
+  background: #ffffff;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.8);
+  padding: 0.35rem 0.95rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #0f172a;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.admin-section .btn-secondary:hover {
+  border-color: #2563eb;
+  color: #1d4ed8;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.1);
+}
+
+.admin-section .btn-small {
+  padding: 0.25rem 0.7rem;
+  font-size: 0.8rem;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.admin-section .btn-small:hover {
+  border-color: #2563eb;
+  color: #1d4ed8;
+}
+
+.admin-section .btn-verify {
+  background: #e0fce5;
+  border-color: #22c55e;
+  color: #166534;
+}
+
+.admin-section .btn-verify:hover {
+  background: #bbf7d0;
+}
+
+.admin-section .btn-false {
+  background: #fee2e2;
+  border-color: #f97373;
+  color: #b91c1c;
+}
+
+.admin-section .btn-false:hover {
+  background: #fecaca;
+}
+
+.admin-section .btn-track {
+  background: #eff6ff;
+  border-color: #3b82f6;
+  color: #1d4ed8;
+}
+
+.admin-section .btn-track:hover {
+  background: #dbeafe;
+}
+
+/* Tabla */
+
 .admin-table-wrapper {
-  margin-top: 0.4rem;
+  margin-top: 0.5rem;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(203, 213, 225, 0.9);
+  background: #f8fafc;
 }
 
 .admin-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  background: linear-gradient(135deg, #e0f2fe, #eef2ff);
+}
+
+.admin-header h1 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: #0f172a;
 }
 
 .admin-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.8rem;
-  border-radius: 0.9rem;
-  overflow: hidden;
-  background: #ffffff;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+  font-size: 0.88rem;
 }
 
 .admin-table thead {
-  background: #eff6ff;
+  background: #e5edff;
 }
 
 .admin-table th,
 .admin-table td {
-  padding: 0.55rem 0.6rem;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.95);
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
   vertical-align: top;
 }
 
-.admin-table th {
-  font-weight: 600;
-  color: #1f2937;
-  text-align: left;
+.admin-table tbody tr:hover {
+  background: #f1f5f9;
 }
 
-.admin-table tbody tr:hover {
-  background: #f9fafb;
+/* Badges de riesgo / extras */
+
+.risk-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
+
+.risk-badge-high {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.risk-badge-medium {
+  background: #fef9c3;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.risk-badge-low {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.badge-danger,
+.badge-neutral,
+.badge-plate {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+
+.badge-danger {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.badge-neutral {
+  background: #e0f2fe;
+  color: #075985;
+}
+
+.badge-plate {
+  background: #0f172a;
+  color: #f9fafb;
+}
+
+/* Flags extra que ya tenías */
+
+.risk-flag,
+.plate-flag {
+  font-size: 0.7rem;
+  color: #4b5563;
+}
+
+/* Descripción y AI */
 
 .admin-report-desc {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.35rem;
 }
 
 .admin-report-text {
-  font-size: 0.8rem;
+  color: #0f172a;
+  font-size: 0.85rem;
 }
 
 .admin-report-ai {
-  font-size: 0.75rem;
-  color: #4b5563;
+  font-size: 0.78rem;
+  color: #64748b;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  background: #f1f5f9;
+  display: inline-block;
 }
 
 .admin-report-risk {
@@ -392,6 +591,11 @@ textarea {
   font-size: 0.78rem;
 }
 
+.admin-report-location .link {
+  font-size: 0.8rem;
+  text-decoration: underline;
+}
+
 .admin-report-image-link .link {
   font-size: 0.78rem;
 }
@@ -402,72 +606,20 @@ textarea {
   gap: 0.25rem;
 }
 
-/* BADGES Y RIESGO */
+/* Responsive panel admin */
 
-.risk-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.15rem 0.5rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-}
+@media (max-width: 900px) {
+  .admin-section {
+    padding: 1.25rem 1rem 1.75rem;
+  }
 
-.risk-badge-high {
-  background: rgba(248, 113, 113, 0.1);
-  color: #b91c1c;
-  border: 1px solid rgba(248, 113, 113, 0.6);
-}
+  .admin-table {
+    font-size: 0.8rem;
+  }
 
-.risk-badge-medium {
-  background: rgba(251, 191, 36, 0.08);
-  color: #92400e;
-  border: 1px solid rgba(251, 191, 36, 0.8);
-}
-
-.risk-badge-low {
-  background: rgba(52, 211, 153, 0.08);
-  color: #065f46;
-  border: 1px solid rgba(52, 211, 153, 0.7);
-}
-
-.risk-flag,
-.plate-flag {
-  font-size: 0.7rem;
-  color: #4b5563;
-}
-
-.badge-danger {
-  display: inline-block;
-  padding: 0.15rem 0.4rem;
-  border-radius: 999px;
-  background: rgba(248, 113, 113, 0.18);
-  color: #b91c1c;
-  font-size: 0.7rem;
-  font-weight: 600;
-}
-
-.badge-neutral {
-  display: inline-block;
-  padding: 0.15rem 0.4rem;
-  border-radius: 999px;
-  background: rgba(148, 163, 184, 0.18);
-  color: #1f2937;
-  font-size: 0.7rem;
-  font-weight: 600;
-}
-
-.badge-plate {
-  display: inline-block;
-  padding: 0.12rem 0.4rem;
-  border-radius: 0.4rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-    'Courier New', monospace;
-  letter-spacing: 0.12em;
-  background: rgba(15, 23, 42, 0.94);
-  color: #e5e7eb;
-  font-size: 0.7rem;
+  .admin-filters {
+    border-radius: 16px;
+  }
 }
 
 /* BOTÓN PÁNICO */
@@ -686,6 +838,7 @@ textarea {
   background: rgba(96, 165, 250, 0.16);
   color: #1d4ed8;
 }
+
 /* === LANDING REFINADA ESTILO SOSAFE PRO (OPCIÓN B) === */
 
 .landing {
