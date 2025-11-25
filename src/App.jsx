@@ -39,9 +39,10 @@ export default function App() {
               <Link to="/admin" className="nav-link">
                 Autoridades
               </Link>
-               <Link to="/hseq" className="nav-link">
-               HSEQ
-               </Link>
+               {/* 🏭 Nuevo: acceso directo a módulo empresas */}
+              <Link to="/hseq/dashboard" className="nav-link">
+                HSEQ empresas
+              </Link>
             </nav>
           </div>
         </header>
