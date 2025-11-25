@@ -53,36 +53,64 @@ export default function LandingPage() {
             <div className="landing-hero-mockup">
               <PhoneMock />
               <p className="landing-hero-caption">
-                Ejemplo de cómo la app muestra incidentes, riesgo y acciones rápidas en un solo
-                lugar, al estilo de las mejores plataformas ciudadanas.
+                La app muestra incidentes, nivel de riesgo, patentes reincidentes y acciones
+                rápidas en un solo lugar, al estilo de las mejores plataformas ciudadanas.
               </p>
             </div>
           </div>
         </section>
 
-        {/* BLOQUES RESUMEN (similar a secciones de SoSafe) */}
-        <section className="landing-section landing-section-grid">
-          <article className="landing-card">
-            <h3>Alertas inteligentes</h3>
-            <p>
-              Desde robos y vehículos sospechosos hasta emergencias médicas o incidentes en el
-              edificio. Todo con IA que ayuda a priorizar lo urgente.
-            </p>
-          </article>
-          <article className="landing-card">
-            <h3>Mapa de incidentes + calor</h3>
-            <p>
-              Autoridades y vecinos ven en un mapa vivo dónde se concentran incidentes,
-              reincidencias por patente y rutas de escape registradas.
-            </p>
-          </article>
-          <article className="landing-card">
-            <h3>Barrio y directorio</h3>
-            <p>
-              Noticias del barrio, directorio de emergencias y servicios (gasistas, electricistas,
-              técnicos) y un canal directo con el municipio.
-            </p>
-          </article>
+        {/* CÓMO FUNCIONA – 3 PASOS EXPLÍCITOS */}
+        <section className="landing-section">
+          <h2 className="landing-subtitle">Cómo funciona Alerta Vecinal</h2>
+          <div className="landing-section-grid">
+            <article className="landing-card">
+              <h3>1. Reporte ciudadano en 3 segundos</h3>
+              <p>
+                El vecino abre la app, elige el tipo de incidente (robo, sospechoso, violencia,
+                emergencia, etc.), opcionalmente carga foto y patente, y envía.
+              </p>
+              <ul>
+                <li>Ubicación tomada automáticamente por GPS.</li>
+                <li>Posibilidad de adjuntar evidencia (foto/video) y patente.</li>
+                <li>Modo pánico para situaciones críticas.</li>
+              </ul>
+            </article>
+
+            <article className="landing-card">
+              <h3>2. IA + mapa de incidentes y calor</h3>
+              <p>
+                La IA analiza la evidencia, detecta armas y patentes, calcula nivel de riesgo y
+                actualiza el mapa de incidentes en tiempo real.
+              </p>
+              <ul>
+                <li>Mapa de calor de incidentes por zona y horario.</li>
+                <li>Historial por patente y detección de reincidencias.</li>
+                <li>Rutas de escape registradas desde el celular del vecino.</li>
+              </ul>
+            </article>
+
+            <article className="landing-card">
+              <h3>3. Acción coordinada con autoridades y barrio</h3>
+              <p>
+                Autoridades, municipio y vecinos ven el mismo tablero: alertas priorizadas,
+                ubicación exacta y contexto para tomar decisiones rápidas.
+              </p>
+              <ul>
+                <li>
+                  Panel de autoridades con listado de incidentes, mapa y cambio de estado
+                  (pendiente, verificado, falso).
+                </li>
+                <li>
+                  Muro vecinal para ver qué está pasando en el barrio y recibir noticias relevantes.
+                </li>
+                <li>
+                  Directorio de emergencias y servicios (gasistas, electricistas, técnicos) para
+                  resolver problemas cotidianos.
+                </li>
+              </ul>
+            </article>
+          </div>
         </section>
       </div>
     </div>
