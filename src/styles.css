@@ -686,3 +686,326 @@ textarea {
   background: rgba(96, 165, 250, 0.16);
   color: #1d4ed8;
 }
+/* === LANDING REFINADA ESTILO SOSAFE PRO (OPCIÓN B) === */
+
+.landing {
+  padding: 1.8rem 1.2rem 2.4rem;
+}
+
+.landing-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.landing-hero {
+  margin-bottom: 1.8rem;
+}
+
+.landing-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+  gap: 1.6rem;
+  align-items: center;
+  padding: 1.6rem 1.6rem 1.8rem;
+  border-radius: 1.6rem;
+  background: radial-gradient(circle at top left, #e0edff 0%, #ffffff 40%, #eef2ff 100%);
+  box-shadow: 0 32px 80px rgba(15, 23, 42, 0.18);
+}
+
+@media (max-width: 900px) {
+  .landing-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.landing-hero-text h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.landing-hero-text h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.35rem;
+}
+
+.landing-hero-lead {
+  margin: 0.25rem 0 0.8rem;
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+.landing-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.landing-hero-note {
+  font-size: 0.78rem;
+  color: #6b7280;
+  margin: 0 0 0.8rem;
+}
+
+.landing-feature-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.landing-feature-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  background: #e0f2fe;
+  color: #1d4ed8;
+}
+
+.pill-icon {
+  font-size: 0.9rem;
+}
+
+/* HERO MOCKUP */
+
+.landing-hero-mockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.landing-hero-caption {
+  font-size: 0.78rem;
+  color: #6b7280;
+  text-align: center;
+  max-width: 280px;
+}
+
+/* PHONE MOCKUP */
+
+.phone-mockup {
+  background: linear-gradient(145deg, #0b1120, #111827);
+  padding: 0.7rem;
+  border-radius: 1.4rem;
+  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.9);
+}
+
+.phone-frame {
+  background: #020617;
+  border-radius: 1.1rem;
+  padding: 0.55rem;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  position: relative;
+  width: 250px;
+}
+
+.phone-notch {
+  position: absolute;
+  top: 0.32rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 10px;
+  border-radius: 999px;
+  background: #020617;
+}
+
+.phone-screen {
+  border-radius: 0.95rem;
+  overflow: hidden;
+  background: radial-gradient(circle at top, #1e293b 0%, #020617 55%, #020617 100%);
+  padding: 0.6rem 0.65rem 0.55rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* BARRA SUPERIOR */
+
+.phone-status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.62rem;
+  color: #e5e7eb;
+  margin-bottom: 0.2rem;
+}
+
+.phone-status-title {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.phone-status-meta {
+  opacity: 0.8;
+}
+
+/* ALERTA PRINCIPAL */
+
+.phone-alert-card {
+  background: linear-gradient(135deg, rgba(248, 113, 113, 0.08), rgba(15, 23, 42, 0.6));
+  border-radius: 0.7rem;
+  padding: 0.45rem 0.5rem;
+  border: 1px solid rgba(248, 113, 113, 0.45);
+  color: #fee2e2;
+  font-size: 0.7rem;
+}
+
+.phone-alert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+
+.phone-alert-type {
+  font-weight: 600;
+}
+
+.phone-alert-text {
+  margin: 0 0 0.25rem;
+}
+
+.phone-alert-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.66rem;
+  opacity: 0.9;
+}
+
+/* CHIPS */
+
+.phone-chip {
+  border-radius: 999px;
+  padding: 0.08rem 0.45rem;
+  font-size: 0.62rem;
+  font-weight: 600;
+}
+
+.phone-chip-high {
+  background: rgba(248, 113, 113, 0.9);
+  color: #fff;
+}
+
+.phone-chip-medium {
+  background: rgba(251, 191, 36, 0.9);
+  color: #111827;
+}
+
+.phone-chip-low {
+  background: rgba(52, 211, 153, 0.9);
+  color: #022c22;
+}
+
+/* MINI MAPA / HEATMAP */
+
+.phone-map-preview {
+  position: relative;
+  border-radius: 0.75rem;
+  background: radial-gradient(circle at center, #1d4ed8 0%, #020617 60%);
+  height: 70px;
+  margin-top: 0.15rem;
+  margin-bottom: 0.15rem;
+  overflow: hidden;
+}
+
+.phone-heat-dot {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(2px);
+}
+
+.phone-heat-dot-1 {
+  width: 32px;
+  height: 32px;
+  background: rgba(248, 113, 113, 0.7);
+  top: 18px;
+  left: 28px;
+}
+
+.phone-heat-dot-2 {
+  width: 26px;
+  height: 26px;
+  background: rgba(251, 191, 36, 0.8);
+  top: 32px;
+  right: 32px;
+}
+
+.phone-heat-dot-3 {
+  width: 24px;
+  height: 24px;
+  background: rgba(56, 189, 248, 0.7);
+  bottom: 10px;
+  left: 80px;
+}
+
+/* FEED DE ALERTAS */
+
+.phone-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.phone-feed-item {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 0.6rem;
+  padding: 0.32rem 0.4rem;
+  font-size: 0.65rem;
+  color: #e5e7eb;
+  border: 1px solid rgba(51, 65, 85, 0.9);
+}
+
+.phone-feed-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.phone-feed-title {
+  font-weight: 600;
+}
+
+.phone-feed-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.15rem;
+  font-size: 0.6rem;
+  color: #9ca3af;
+}
+
+/* ACCIONES INFERIORES */
+
+.phone-actions-row {
+  margin-top: 0.28rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.25rem;
+}
+
+.phone-action-btn {
+  flex: 1;
+  border-radius: 0.7rem;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: rgba(15, 23, 42, 0.95);
+  color: #e5e7eb;
+  font-size: 0.6rem;
+  padding: 0.3rem 0.2rem 0.28rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.05rem;
+}
+
+.phone-action-icon {
+  font-size: 0.85rem;
+}
+
+.phone-action-label {
+  font-size: 0.6rem;
+}
