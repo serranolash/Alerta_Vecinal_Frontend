@@ -1,47 +1,59 @@
 // src/routes/AdminPanel.jsx
-import React, { useEffect, useState } from "react";
-import { AdminReportTable } from "../components/AdminReportTable";
-import { api } from "../api";
-import { TrackViewer } from "../components/TrackViewer";
+import React, { useEffect, useState } from 'react'
+import { AdminReportTable } from '../components/AdminReportTable'
+import { api } from '../api'
+import { TrackViewer } from '../components/TrackViewer'
 
 export function AdminPanel() {
-  const [reports, setReports] = useState([]);
-  const [statusFilter, setStatusFilter] = useState("todos");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [trackReport, setTrackReport] = useState(null); // 🆕 reporte seleccionado para ver ruta
+  const [reports, setReports] = useState([])
+  const [statusFilter, setStatusFilter] = useState('todos')
+  const [plateFilter, setPlateFilter] = useState('')   // 🆕 filtro por patente
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+  const [trackReport, setTrackReport] = useState(null) // 🆕 reporte seleccionado para ver ruta
 
   const loadReports = async () => {
-    setLoading(true);
-    setError("");
+    setLoading(true)
+    setError('')
     try {
-      const data = await api.listReports({
-        status: statusFilter === "todos" ? null : statusFilter,
-        limit: 50,
-      });
-      const items = data.items || data.data || data.reports || [];
-      setReports(items);
+      // usamos el endpoint admin de tu api.js
+      const resp = await api.adminListReports({
+        status: statusFilter === 'todos' ? undefined : statusFilter,
+      })
+      let items = resp.items || resp.data || resp.reports || []
+
+      // 🆕 filtro por patente SOLO en front
+      if (plateFilter.trim()) {
+        const plate = plateFilter.trim().toUpperCase()
+        items = items.filter((r) => {
+          const rp = (r.plate_text || '').trim().toUpperCase()
+          return rp.includes(plate)
+        })
+      }
+
+      setReports(items)
     } catch (err) {
-      console.error("[AdminPanel] Error cargando reportes:", err);
-      setError("No se pudieron cargar los reportes.");
+      console.error('[AdminPanel] Error cargando reportes:', err)
+      setError('No se pudieron cargar los reportes.')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   useEffect(() => {
-    loadReports();
-  }, [statusFilter]);
+    loadReports()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [statusFilter, plateFilter])
 
   const handleChangeStatus = async (id, newStatus) => {
     try {
-      await api.changeStatus(id, newStatus);
-      await loadReports();
+      await api.adminChangeStatus(id, newStatus)
+      await loadReports()
     } catch (err) {
-      console.error("[AdminPanel] Error cambiando estado:", err);
-      alert("No se pudo actualizar el estado del reporte.");
+      console.error('[AdminPanel] Error cambiando estado:', err)
+      alert('No se pudo actualizar el estado del reporte.')
     }
-  };
+  }
 
   return (
     <main className="admin-page">
@@ -56,7 +68,7 @@ export function AdminPanel() {
 
         <div className="admin-filters">
           <label>
-            Filtrar por estado:&nbsp;
+            Estado:&nbsp;
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
@@ -67,7 +79,22 @@ export function AdminPanel() {
               <option value="falso">Falso</option>
             </select>
           </label>
-          <button type="button" className="btn-secondary" onClick={loadReports}>
+
+          <label>
+            Patente:&nbsp;
+            <input
+              type="text"
+              placeholder="Ej: ABC123"
+              value={plateFilter}
+              onChange={(e) => setPlateFilter(e.target.value.toUpperCase())}
+            />
+          </label>
+
+          <button
+            type="button"
+            className="btn-secondary"
+            onClick={loadReports}
+          >
             Actualizar
           </button>
         </div>
@@ -79,13 +106,13 @@ export function AdminPanel() {
           <AdminReportTable
             reports={reports}
             onChangeStatus={handleChangeStatus}
-            // 🆕 cuando el admin hace clic en "Ver ruta"
+            // 🔑 AQUÍ se abre el modal de TrackViewer (igual que en tu código “bueno”)
             onViewTrack={(report) => setTrackReport(report)}
           />
         )}
       </section>
 
-      {/* 🆕 Modal de ruta de escape */}
+      {/* Modal de ruta de escape (el mismo que ya tenías funcionando) */}
       {trackReport && (
         <TrackViewer
           report={trackReport}
@@ -93,7 +120,7 @@ export function AdminPanel() {
         />
       )}
     </main>
-  );
+  )
 }
 
-export default AdminPanel;
+export default AdminPanel

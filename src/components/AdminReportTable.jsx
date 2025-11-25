@@ -243,7 +243,7 @@ export function AdminReportTable({ reports, onChangeStatus, onViewTrack }) {
                     {typeof onViewTrack === 'function' && (
                       <button
                         className="btn-small btn-secondary"
-                        onClick={() => onViewTrack(r.id)}
+                        onClick={() => onViewTrack && onViewTrack(r)}
                       >
                         Ver ruta
                       </button>

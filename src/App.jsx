@@ -1,10 +1,11 @@
+// src/App.jsx
 import React from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import { CitizenApp } from './routes/CitizenApp'
+import { AdminPanel } from './routes/AdminPanel'   // 👈 usamos AdminPanel otra vez
 import { Logo } from './components/Logo'
 import LandingPage from './components/LandingPage'
 import AdminMap from './components/AdminMap'
-import AdminArea from './pages/AdminArea' // 🆕 nuevo import
 
 export default function App() {
   return (
@@ -33,14 +34,13 @@ export default function App() {
 
         <Routes>
           <Route path="/app" element={<CitizenApp />} />
-          {/* 🆕 ahora /admin usa AdminArea */}
-          <Route path="/admin" element={<AdminArea />} />
+          <Route path="/admin" element={<AdminPanel />} />   {/* 👈 volvemos a AdminPanel */}
           <Route path="/admin/mapa" element={<AdminMap />} />
           <Route path="/" element={<LandingPage />} />
         </Routes>
 
         <footer className="app-footer">
-          <small>AlertaVecinal v2.0 · MVP PWA · Diseñado por Alex & ChatGPT</small>
+          <small>AlertaVecinal v2.0 · MVP PWA · Diseñado por Alex &amp; ChatGPT</small>
         </footer>
       </div>
     </BrowserRouter>
