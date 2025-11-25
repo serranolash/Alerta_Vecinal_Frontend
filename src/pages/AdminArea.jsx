@@ -1,28 +1,34 @@
-// src/pages/AdminArea.jsx
+//src/pages/AdminArea.jsx
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { api } from '../api'
 import { AdminReportTable } from '../components/AdminReportTable'
-import { TrackViewer } from '../components/TrackViewer'
 
 export default function AdminArea() {
   const [reports, setReports] = useState([])
-  const [statusFilter, setStatusFilter] = useState('todos')
+  const [statusFilter, setStatusFilter] = useState('')
+  const [plateFilter, setPlateFilter] = useState('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-  const [trackReport, setTrackReport] = useState(null)
+  const navigate = useNavigate()
 
   const loadReports = async () => {
     setLoading(true)
     setError('')
     try {
-      const data = await api.listReports({
-        status: statusFilter === 'todos' ? undefined : statusFilter,
-      })
-      const items = data.items || data.data || data.reports || []
+      const params = {
+        status: statusFilter || undefined,
+      }
+      if (plateFilter.trim()) {
+        params.plate = plateFilter.trim()
+      }
+
+      const resp = await api.adminListReports(params)
+      const items = resp.items || resp.data || resp.reports || []
       setReports(items)
     } catch (err) {
-      console.error('[AdminArea] Error cargando reportes', err)
-      setError('No se pudieron cargar los reportes.')
+      console.error(err)
+      setError(err.message || 'Error al cargar reportes')
     } finally {
       setLoading(false)
     }
@@ -31,61 +37,68 @@ export default function AdminArea() {
   useEffect(() => {
     loadReports()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [statusFilter])
+  }, [statusFilter, plateFilter])
 
-  const handleChangeStatus = async (id, status) => {
+  const handleChangeStatus = async (id, newStatus) => {
     try {
-      await api.changeStatus(id, status)
-      await loadReports()
+      await api.adminChangeStatus(id, newStatus)
+      loadReports()
     } catch (err) {
-      console.error('[AdminArea] Error cambiando estado', err)
-      alert('No se pudo actualizar el estado del reporte.')
+      console.error(err)
+      alert(err.message || 'Error cambiando estado')
     }
   }
 
-  return (
-    <div className="admin-page">
-      <section className="admin-filters">
-        <h1>Panel de autoridades</h1>
+  const handleViewTrack = (report) => {
+    navigate(`/admin/mapa?reportId=${report.id}`)
+  }
 
-        <div className="admin-filter-row">
+  return (
+    <div className="admin-area">
+      <div className="admin-filters">
+        <div className="filter-group">
           <label>
-            Filtrar por estado:{' '}
+            Estado:&nbsp;
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
             >
-              <option value="todos">Todos</option>
-              <option value="pendiente">Pendiente</option>
-              <option value="verificado">Verificado</option>
-              <option value="falso">Falso</option>
+              <option value="">Todos</option>
+              <option value="pendiente">Pendientes</option>
+              <option value="verificado">Verificados</option>
+              <option value="falso">Falsos</option>
             </select>
           </label>
-
-          <button className="btn-secondary" onClick={loadReports}>
-            Actualizar
-          </button>
         </div>
-      </section>
 
-      {loading && <p>Cargando reportes...</p>}
+        <div className="filter-group">
+          <label>
+            Patente:&nbsp;
+            <input
+              type="text"
+              placeholder="Ej: ABC123"
+              value={plateFilter}
+              onChange={(e) => setPlateFilter(e.target.value.toUpperCase())}
+            />
+          </label>
+        </div>
+
+        <button className="btn-secondary" type="button" onClick={loadReports}>
+          Actualizar
+        </button>
+      </div>
+
+      {loading && <p className="muted">Cargando reportes...</p>}
       {error && <p className="error">{error}</p>}
 
       {!loading && !error && (
         <AdminReportTable
           reports={reports}
           onChangeStatus={handleChangeStatus}
-          onViewTrack={(report) => setTrackReport(report)} // 🆕 acá enganchamos la ruta
-        />
-      )}
-
-      {/* 🆕 Overlay con el mapa de la ruta */}
-      {trackReport && (
-        <TrackViewer
-          report={trackReport}
-          onClose={() => setTrackReport(null)}
+          onViewTrack={handleViewTrack}
         />
       )}
     </div>
   )
 }
+
