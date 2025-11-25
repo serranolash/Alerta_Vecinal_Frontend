@@ -10,6 +10,8 @@ import NeighborhoodNews from './routes/NeighborhoodNews'
 import HelpDirectory from './routes/HelpDirectory'
 import { HseqReportApp } from './routes/HseqReportApp'
 import HseqDashboard from './routes/HseqDashboard'
+import { ContactPage } from './routes/ContactPage'
+
 
 
 export default function App() {
@@ -47,6 +49,9 @@ export default function App() {
               <Link to="/hseq/dashboard" className="nav-link">
                 HSEQ empresas
               </Link>
+              <Link to="/contacto" className="nav-link">
+               Contacto
+              </Link>
             </nav>
           </div>
         </header>
@@ -60,6 +65,8 @@ export default function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/hseq" element={<HseqReportApp />} />
           <Route path="/hseq/dashboard" element={<HseqDashboard />} />
+          <Route path="/contacto" element={<ContactPage />} />
+
         </Routes>
 
         <footer className="app-footer">

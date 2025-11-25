@@ -1302,3 +1302,156 @@ textarea {
     min-width: 640px;
   }
 }
+/* ======================
+   CONTACTO / LEADS
+   ====================== */
+
+.contact-page {
+  padding: 1.6rem 1.1rem 2rem;
+}
+
+.contact-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.contact-shell {
+  background: linear-gradient(135deg, #ffffff, #eef2ff);
+  border-radius: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.15);
+  padding: 1.6rem 1.6rem 1.9rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.contact-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  background: #e0f2fe;
+  color: #1d4ed8;
+  margin-bottom: 0.45rem;
+}
+
+.contact-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.5rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #0f172a;
+}
+
+.contact-lead {
+  margin: 0 0 0.8rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.contact-type-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+
+.contact-type-pill {
+  border-radius: 999px;
+  padding: 0.28rem 0.75rem;
+  font-size: 0.8rem;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: #ffffff;
+  color: #111827;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.contact-type-pill-active {
+  border-color: #2563eb;
+  background: #e0edff;
+  color: #1d4ed8;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.12);
+}
+
+.contact-benefits {
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.82rem;
+  color: #4b5563;
+}
+
+.contact-benefits li + li {
+  margin-top: 0.15rem;
+}
+
+.contact-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-form-title {
+  margin: 0 0 0.2rem;
+  font-size: 1rem;
+}
+
+.contact-form-subtitle {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.contact-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.contact-checkbox-group label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+
+.contact-checkbox-group input[type='checkbox'] {
+  margin-top: 0.08rem;
+}
+
+.contact-legal {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin: 0.3rem 0 0;
+}
+
+/* Responsive contacto */
+@media (max-width: 900px) {
+  .contact-page {
+    padding: 1.2rem 0.7rem 1.6rem;
+  }
+
+  .contact-shell {
+    padding: 1.4rem 1.1rem 1.7rem;
+    border-radius: 18px;
+  }
+
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
