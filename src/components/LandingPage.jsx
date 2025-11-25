@@ -9,12 +9,13 @@ export default function LandingPage() {
         {/* HERO */}
         <section className="landing-hero">
           <div className="landing-hero-text">
-            <h1>AlertaVecinal</h1>
+            <h1>ALERTAVECINAL</h1>
             <h2>La seguridad del futuro, en tu bolsillo y en tu planta.</h2>
             <p>
-              Reportes en segundos, IA que detecta riesgo, mapa vivo de incidentes y un módulo HSEQ
-              para empresas y plantas industriales.
+              Reportes en segundos, IA que detecta riesgo, mapa vivo de incidentes y un
+              módulo HSEQ para empresas y plantas industriales.
             </p>
+
             <div className="landing-hero-actions">
               <Link to="/app" className="btn btn-primary">
                 Probar demo ciudadana
@@ -22,35 +23,93 @@ export default function LandingPage() {
               <Link to="/admin" className="btn btn-outline">
                 Ver panel de autoridades
               </Link>
-              <Link to="/hseq/dashboard" className="btn btn-ghost">
+            </div>
+
+            <div className="landing-hero-links">
+              <Link to="/hseq" className="landing-link">
                 Solución empresas HSEQ+
               </Link>
             </div>
+
             <p className="landing-hero-note">
               MVP v3.0 — orientado a municipios, fuerzas de seguridad, empresas, industrias y
               refinerías.
             </p>
           </div>
 
+          {/* 📱 Mockup de celular (vuelve el diseño anterior) */}
           <div className="landing-hero-mockup">
             <div className="phone-mockup">
               <div className="phone-screen">
-                <div className="phone-header">Reporte de emergencia</div>
-                <div className="phone-body">
-                  <div className="phone-map-skeleton" />
-                  <div className="phone-card">
-                    <div className="phone-chip phone-chip-red">Riesgo alto</div>
-                    <p>Dos hombres en moto con arma, robo de celular.</p>
-                    <div className="phone-meta">
-                      <span>⚠ Zona caliente</span>
-                      <span>⏱ Hace 2 min</span>
-                    </div>
+                <div className="phone-header-row">
+                  <span className="phone-app-name">ALERTA VECINAL</span>
+                  <span className="phone-status-pill">LTE · 08:32</span>
+                </div>
+
+                <div className="phone-section phone-main-alert">
+                  <div className="phone-section-title">Robo en proceso</div>
+                  <div className="phone-chips-row">
+                    <span className="phone-chip phone-chip-red">Riesgo alto</span>
+                    <span className="phone-chip phone-chip-dark">Hace 2 min</span>
                   </div>
+                  <p className="phone-text">
+                    Moto roja, 2 personas, arma a la vista. Vecino reportando a 120 m de tu
+                    ubicación.
+                  </p>
+                  <div className="phone-meta">
+                    <span>📍 Av. Principal y Sarmiento</span>
+                    <span>⏱ Zona caliente</span>
+                  </div>
+                </div>
+
+                <div className="phone-section phone-map-skeleton" />
+
+                <div className="phone-section phone-card-list">
+                  <div className="phone-card-row">
+                    <span className="phone-pill phone-pill-yellow">Vehículo sospechoso</span>
+                    <span className="phone-tag-pill">Medio</span>
+                  </div>
+                  <div className="phone-card-meta">
+                    <span>Patente LCG303</span>
+                    <span>4 vecinos mirando</span>
+                  </div>
+
+                  <div className="phone-divider" />
+
+                  <div className="phone-card-row">
+                    <span className="phone-pill phone-pill-blue">Botón de pánico</span>
+                    <span className="phone-tag-pill phone-tag-alert">Alerta</span>
+                  </div>
+                  <div className="phone-card-meta">
+                    <span>Depto 3B · 1 min</span>
+                    <span>Policía notificada</span>
+                  </div>
+
+                  <div className="phone-divider" />
+
+                  <div className="phone-card-row">
+                    <span className="phone-pill phone-pill-green">
+                      Corte de luz en el barrio
+                    </span>
+                    <span className="phone-tag-pill">Comunidad</span>
+                  </div>
+                  <div className="phone-card-meta">
+                    <span>Zona norte · 15 vecinos sin luz</span>
+                    <span>Empresa eléctrica avisada</span>
+                  </div>
+                </div>
+
+                <div className="phone-bottom-nav">
+                  <button className="phone-nav-btn phone-nav-btn-primary">Reporte</button>
+                  <button className="phone-nav-btn">Mapa</button>
+                  <button className="phone-nav-btn">Noticias</button>
+                  <button className="phone-nav-btn">Pánico</button>
                 </div>
               </div>
             </div>
             <p className="landing-hero-caption">
-              Mockup ilustrativo de la app móvil con IA de riesgo, ruta de escape y geolocalización.
+              Mockup ilustrativo de la app móvil con IA de riesgo, mapa de incidentes y rutas de
+              escape.
             </p>
           </div>
         </section>
@@ -84,7 +143,7 @@ export default function LandingPage() {
           <h3>¿Para quién es AlertaVecinal?</h3>
           <div className="landing-grid">
             <div className="landing-card">
-              <h3>Ciudadanos y barrios</h3>
+              <h4>Ciudadanos y barrios</h4>
               <ul>
                 <li>✅ Sentirse acompañados ante robos y emergencias.</li>
                 <li>✅ Saber qué pasa en el barrio en tiempo real.</li>
@@ -92,7 +151,7 @@ export default function LandingPage() {
               </ul>
             </div>
             <div className="landing-card">
-              <h3>Autoridades</h3>
+              <h4>Autoridades</h4>
               <ul>
                 <li>✅ Mapa unificado de incidentes con IA y nivel de riesgo.</li>
                 <li>✅ Priorización por riesgo, cercanía y reincidencia por patente.</li>
@@ -100,106 +159,11 @@ export default function LandingPage() {
               </ul>
             </div>
             <div className="landing-card">
-              <h3>Empresas & HSEQ</h3>
+              <h4>Empresas &amp; HSEQ</h4>
               <ul>
                 <li>✅ Reportes de accidentes, casi accidentes y condiciones inseguras.</li>
-                <li>✅ Asignación de responsables y seguimiento de acciones correctivas.</li>
-                <li>✅ Tablero HSEQ con áreas críticas y cumplimiento por planta.</li>
-              </ul>
-            </div>
-            <div className="landing-card">
-              <h3>Inversores</h3>
-              <ul>
-                <li>✅ MVP funcionando con PWA, IA, mapa y módulo HSEQ.</li>
-                <li>✅ Modelo B2G + B2B: municipios, empresas, industrias, petroleras.</li>
-                <li>✅ Roadmap claro a visión por computadora e integración con cámaras.</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* MÓDULO EMPRESAS / HSEQ */}
-        <section className="landing-section landing-section-alt">
-          <h3>Módulo HSEQ+ para empresas, plantas y minería</h3>
-          <p className="landing-intro">
-            AlertaVecinal HSEQ+ transforma los hallazgos de seguridad en acciones concretas. Empleados
-            y contratistas reportan desde el celular; la plataforma asigna responsables, fija fechas
-            límite y ofrece una vista ejecutiva del riesgo en toda la operación.
-          </p>
-
-          <div className="landing-grid">
-            <div className="landing-card">
-              <h4>Hallazgos e incidentes</h4>
-              <ul>
-                <li>
-                  Reporte de accidentes, casi accidentes, actos y condiciones inseguras, acoso,
-                  derrames y más.
-                </li>
-                <li>
-                  Evidencia completa: fotos, ubicación, descripción y clasificación de riesgo por
-                  tipo de evento.
-                </li>
-                <li>
-                  Notificación inmediata a supervisores y responsables definidos por área o turno.
-                </li>
-              </ul>
-            </div>
-
-            <div className="landing-card">
-              <h4>Inspecciones y auditorías</h4>
-              <ul>
-                <li>Checklists dinámicos para rutina diaria, permisos de trabajo y auditorías.</li>
-                <li>Asignación de tareas correctivas a equipos o personas específicas.</li>
-                <li>Soporte para trabajo en campo, incluso en zonas con conectividad limitada.</li>
-              </ul>
-            </div>
-
-            <div className="landing-card">
-              <h4>Tablero y analítica HSEQ</h4>
-              <ul>
-                <li>Panel ejecutivo con eventos por área, turno, tipo y criticidad.</li>
-                <li>
-                  Identificación de áreas críticas y brechas abiertas para enfocar recursos donde
-                  más duele.
-                </li>
-                <li>
-                  Base lista para conectarse con BI (Power BI, etc.) y sistemas corporativos
-                  existentes.
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="landing-hero-actions" style={{ marginTop: '1.5rem' }}>
-            <Link to="/hseq" className="btn btn-primary">
-              Abrir app HSEQ para empleados
-            </Link>
-            <Link to="/hseq/dashboard" className="btn btn-outline">
-              Ver dashboard HSEQ ejecutivo
-            </Link>
-          </div>
-        </section>
-
-        {/* CASOS DE USO / ROADMAP */}
-        <section className="landing-section">
-          <h3>Casos de uso y roadmap</h3>
-          <div className="landing-grid">
-            <div className="landing-card">
-              <h4>Casos de uso</h4>
-              <ul>
-                <li>🏙 Municipios y barrios que quieren mapas de delito en tiempo real.</li>
-                <li>🚔 Fuerzas de seguridad y empresas de vigilancia privada.</li>
-                <li>🏭 Plantas industriales, depósitos y logística.</li>
-                <li>⛽ Refinerías, petróleo & gas con foco en prevención de pérdidas.</li>
-              </ul>
-            </div>
-            <div className="landing-card">
-              <h4>Roadmap AlertaVecinal 5.0</h4>
-              <ul>
-                <li>🔍 Visión por computadora integrada a cámaras (armas, patentes, rostros).</li>
-                <li>🎥 Monitoreo de video en tiempo real con alertas automáticas.</li>
-                <li>📡 Integración con hardware: cámaras, botones físicos de pánico, sensores.</li>
-                <li>📊 Módulos avanzados de analítica de delito y riesgo HSEQ.</li>
+                <li>✅ Dashboard de áreas críticas y acciones correctivas.</li>
+                <li>✅ Misma tecnología aplicada a plantas, depósitos y refinerías.</li>
               </ul>
             </div>
           </div>
@@ -207,10 +171,10 @@ export default function LandingPage() {
 
         {/* DEMO CTA */}
         <section className="landing-section landing-demo">
-          <h3>Ver la plataforma en acción</h3>
+          <h3>Ver la app en acción</h3>
           <p>
-            Probá la app desde el lado del ciudadano, explorá el panel de autoridades con mapa en
-            tiempo real y conocé el módulo HSEQ+ para empresas e industria.
+            Probá la app desde el lado del ciudadano o explorá el panel de autoridades con mapa en
+            tiempo real, IA de riesgo y rutas de escape.
           </p>
           <div className="landing-hero-actions">
             <Link to="/app" className="btn btn-primary">
@@ -219,18 +183,12 @@ export default function LandingPage() {
             <Link to="/admin/mapa" className="btn btn-outline">
               Ver mapa de incidentes
             </Link>
-            <Link to="/hseq/dashboard" className="btn btn-ghost">
-              Explorar módulo HSEQ+
-            </Link>
           </div>
         </section>
 
         {/* FOOTER */}
         <footer className="landing-footer">
-          <p>
-            AlertaVecinal · MVP v3.0 · IA + geolocalización + HSEQ · Listo para pilotos con
-            municipios, empresas e industria pesada.
-          </p>
+          <p>AlertaVecinal · MVP v3.0 · IA + geolocalización · Listo para pilotos reales.</p>
         </footer>
       </div>
     </div>
