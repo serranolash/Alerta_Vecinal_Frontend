@@ -110,4 +110,25 @@ export const api = {
       }),
     });
   },
-};
+
+
+// Crear reporte HSEQ (form-data, igual que createReport)
+  async createHseqReport(formData) {
+    return request('/api/hseq/reports', {
+      method: 'POST',
+      body: formData,
+    })
+  },  
+
+
+  // Listar reportes HSEQ
+  async listHseqReports() {
+    return request('/api/hseq/reports', { method: 'GET' })
+  },
+
+  // Resumen HSEQ (tarjetas de arriba)
+  async getHseqSummary() {
+    return request('/api/hseq/summary', { method: 'GET' })
+  },
+
+  };

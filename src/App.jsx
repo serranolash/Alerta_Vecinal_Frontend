@@ -8,6 +8,8 @@ import LandingPage from './components/LandingPage'
 import AdminMap from './components/AdminMap'
 import NeighborhoodNews from './routes/NeighborhoodNews'
 import HelpDirectory from './routes/HelpDirectory'
+import { HseqReportApp } from './routes/HseqReportApp'
+
 
 export default function App() {
   return (
@@ -47,6 +49,8 @@ export default function App() {
           <Route path="/admin" element={<AdminPanel />} />
           <Route path="/admin/mapa" element={<AdminMap />} />
           <Route path="/" element={<LandingPage />} />
+          <Route path="/hseq" element={<HseqReportApp />} />
+          <Route path="/hseq/dashboard" element={<HseqDashboard />} />
         </Routes>
 
         <footer className="app-footer">
