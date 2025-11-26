@@ -69,17 +69,21 @@ export function CitizenApp() {
 
   return (
     <main className="app-main app-main-grid">
+      {/* Columna 1: creación de reporte */}
       <section className="card">
         <NearbyAlertsBar coords={coords} />
 
-        <h2>Nuevo reporte</h2>
+        <h2>Nuevo reporte ciudadano</h2>
         <p className="muted">
-          Tu ubicación se toma automáticamente. Si podés, agrega detalles:
-          vehículo, patente, cantidad de personas, si viste un arma, etc.
+          Esta es la vista que usa el vecino para informar lo que está viendo en tiempo real.
+          Tu ubicación se toma automáticamente. Si podés, agregá detalles: vehículo, patente,
+          cantidad de personas, si viste un arma y hacia dónde se mueven.
         </p>
 
         {error && (
-          <p style={{ color: "#f87171", fontWeight: 500 }}>{error}</p>
+          <p style={{ color: "#f87171", fontWeight: 500 }}>
+            {error}
+          </p>
         )}
 
         <ReportForm
@@ -90,23 +94,37 @@ export function CitizenApp() {
         />
       </section>
 
+      {/* Columna 2: lista de reportes recientes */}
       <section className="card">
         <div className="card-header">
-          <h2>Reportes recientes</h2>
+          <div>
+            <h2>Reportes recientes</h2>
+            <p className="muted">
+              Últimos incidentes enviados por la comunidad. Esta información alimenta el
+              panel de autoridades y el mapa de incidentes.
+            </p>
+          </div>
           <button className="btn-secondary" onClick={loadReports}>
             Actualizar
           </button>
         </div>
         {loading ? (
-          <p>Cargando reportes...</p>
+          <p>Cargando reportes recientes...</p>
         ) : (
           <ReportsList reports={reports} />
         )}
       </section>
 
+      {/* Fila completa: mini-mapa / heatmap */}
       <section className="card full-width-card">
         <div className="card-header">
-          <h2>Mapa rápido de zonas con reportes</h2>
+          <div>
+            <h2>Mapa rápido de zonas con reportes</h2>
+            <p className="muted">
+              Vista simplificada de concentración de incidentes reportados. El panel de
+              autoridades cuenta además con un mapa táctico completo.
+            </p>
+          </div>
           <button className="btn-secondary" onClick={loadHeatmap}>
             Actualizar mapa
           </button>
@@ -114,6 +132,7 @@ export function CitizenApp() {
         <HeatmapPreview cells={heatmap} />
       </section>
 
+      {/* Botón de pánico (acción directa) */}
       <PanicButton coords={coords} userId={null} />
     </main>
   )
