@@ -149,7 +149,77 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Acá después podemos sumar secciones tipo “para Municipios”, “para Barrios”, etc. */}
+        {/* SECCIÓN: CÓMO FUNCIONA */}
+        <section style={{ marginTop: "1.8rem" }}>
+          <div className="card">
+            <div className="card-header">
+              <h2 className="card-title">¿Cómo funciona AlertaVecinal?</h2>
+              <p className="card-subtitle">
+                Pensado para que cualquier vecino pueda pedir ayuda en segundos y que las autoridades vean todo en un panel unificado.
+              </p>
+            </div>
+
+            <ul className="contact-benefits">
+              <li>
+                <strong>1. El vecino reporta en 10 segundos.</strong> Abre la app, toca “Nuevo
+                reporte”, saca una foto y se envía su ubicación automática.
+              </li>
+              <li>
+                <strong>2. La IA prioriza por riesgo.</strong> Analizamos la evidencia (texto,
+                imagen, patente) y clasificamos como riesgo alto, medio o bajo.
+              </li>
+              <li>
+                <strong>3. El municipio ve todo en un mapa de incidentes.</strong> El panel para
+                autoridades muestra un mapa en vivo, tabla de casos, filtros por zona y por
+                reincidencia de patentes.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        {/* SECCIÓN: PARA VECINOS Y MUNICIPIOS */}
+        <section style={{ marginTop: "1.6rem" }}>
+          <div className="directory-layout">
+            {/* Para vecinos */}
+            <div className="card">
+              <div className="card-header">
+                <h2 className="card-title">Para vecinos y barrios</h2>
+              </div>
+              <p className="muted">
+                Pensado para que tu comunidad tenga una única app para emergencias, sospechas
+                y comunicación rápida.
+              </p>
+              <ul className="contact-benefits">
+                <li>Reportes con foto, ubicación y descripción en segundos.</li>
+                <li>Alertas cercanas para saber qué pasa en tu zona ahora mismo.</li>
+                <li>Botón de pánico para emergencias críticas.</li>
+                <li>Registro de patentes sospechosas y rutas de escape.</li>
+              </ul>
+            </div>
+
+            {/* Para municipios */}
+            <div className="card">
+              <div className="card-header">
+                <h2 className="card-title">Para municipios y centros de monitoreo</h2>
+              </div>
+              <p className="muted">
+                Una capa de inteligencia arriba de los llamados al 911: consolidamos la mirada
+                del barrio en un panel profesional.
+              </p>
+              <ul className="contact-benefits">
+                <li>Mapa de incidentes en vivo para patrullaje inteligente.</li>
+                <li>Panel con filtros por riesgo, estado, zona y patente.</li>
+                <li>Historial de casos para detectar puntos calientes y reincidencia.</li>
+                <li>Listo para pilotos rápidos en 1 o varios barrios de tu ciudad.</li>
+              </ul>
+              <div style={{ marginTop: "0.6rem" }}>
+                <Link to="/admin" className="btn btn-secondary">
+                  Ver demo del panel de autoridades
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
   )
