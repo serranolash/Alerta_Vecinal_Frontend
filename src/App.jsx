@@ -12,8 +12,6 @@ import { HseqReportApp } from './routes/HseqReportApp'
 import HseqDashboard from './routes/HseqDashboard'
 import { ContactPage } from './routes/ContactPage'
 
-
-
 export default function App() {
   return (
     <BrowserRouter>
@@ -22,9 +20,10 @@ export default function App() {
           <div className="brand">
             <Logo />
             <div className="brand-text">
-              <h1>ALERTAVECINAL</h1>
-              <p>Red comunitaria de emergencias en tiempo real</p>
+              <h1>GUARDIA AI</h1>
+              <p>Plataforma inteligente de seguridad ciudadana</p>
             </div>
+
             <nav className="nav-links">
               <Link to="/" className="nav-link">
                 Inicio
@@ -41,7 +40,7 @@ export default function App() {
               <Link to="/admin" className="nav-link">
                 Autoridades
               </Link>
-               {/* 🏭 Nuevo: botón directo para que empleados reporten HSEQ */}
+              {/* 🏭 Nuevo: botón directo para que empleados reporten HSEQ */}
               <Link to="/hseq" className="nav-link">
                 HSEQ reportes
               </Link>
@@ -50,7 +49,7 @@ export default function App() {
                 HSEQ empresas
               </Link>
               <Link to="/contacto" className="nav-link">
-               Contacto
+                Contacto
               </Link>
             </nav>
           </div>
@@ -66,11 +65,12 @@ export default function App() {
           <Route path="/hseq" element={<HseqReportApp />} />
           <Route path="/hseq/dashboard" element={<HseqDashboard />} />
           <Route path="/contacto" element={<ContactPage />} />
-
         </Routes>
 
         <footer className="app-footer">
-          <small>AlertaVecinal v2.1 · MVP PWA · IA + comunidad · Diseñado para pilotos reales Desarrollado Por Ing Alex Serrano</small>
+          <small>
+            GUARDIA AI v2.1 · Plataforma inteligente de seguridad ciudadana · IA + comunidad · Diseñado para pilotos reales · Desarrollado por Ing. Alex Serrano
+          </small>
         </footer>
       </div>
     </BrowserRouter>

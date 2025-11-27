@@ -11,12 +11,11 @@ export default function LandingPage() {
           <div className="landing-hero-grid">
             {/* Lado izquierdo: texto */}
             <div className="landing-hero-text">
-              <h1>ALERTAVECINAL</h1>
-              <h2>Seguridad colaborativa, en tiempo real.</h2>
+              <h1>GUARDIA AI</h1>
+              <h2>La plataforma inteligente de seguridad ciudadana.</h2>
               <p className="landing-hero-lead">
-                Tu barrio conectado a una red de emergencias inteligente:
-                reportes geolocalizados, IA para priorizar riesgo y panel
-                especial para municipios y fuerzas de seguridad.
+                Reportes ciudadanos en segundos, análisis de riesgo con IA y un panel
+                profesional para municipios, centros de monitoreo y fuerzas de seguridad.
               </p>
 
               <div className="landing-hero-actions">
@@ -24,12 +23,12 @@ export default function LandingPage() {
                   Abrir app ciudadana
                 </Link>
                 <Link to="/admin" className="btn btn-secondary">
-                  Panel para autoridades
+                  Panel de autoridades
                 </Link>
               </div>
 
               <p className="landing-hero-note">
-                Demo en vivo · ideal para municipios, comisarías y centros de monitoreo.
+                MVP en funcionamiento · ideal para pilotos en barrios, municipios y ciudades.
               </p>
 
               <div className="landing-feature-row">
@@ -39,7 +38,7 @@ export default function LandingPage() {
                 </div>
                 <div className="landing-feature-pill">
                   <span className="pill-icon">📍</span>
-                  Reportes con ubicación precisa
+                  Reportes geolocalizados
                 </div>
                 <div className="landing-feature-pill">
                   <span className="pill-icon">🚨</span>
@@ -60,8 +59,8 @@ export default function LandingPage() {
                   <div className="phone-screen">
                     {/* Status superior */}
                     <div className="phone-status-bar">
-                      <div className="phone-status-title">ALERTAS EN VIVO</div>
-                      <div className="phone-status-meta">Barrio Demo · 21:37</div>
+                      <div className="phone-status-title">GUARDIA AI</div>
+                      <div className="phone-status-meta">Centro Demo · 21:37</div>
                     </div>
 
                     {/* Alerta principal */}
@@ -71,7 +70,7 @@ export default function LandingPage() {
                         <span className="phone-chip phone-chip-high">Riesgo alto</span>
                       </div>
                       <p className="phone-alert-text">
-                        Moto roja, 2 personas, arma a la vista. Último reporte a 150 m.
+                        Moto roja, 2 personas, arma a la vista. Último reporte a 150 m de tu ubicación.
                       </p>
                       <div className="phone-alert-meta">
                         <span>Hace 2 min</span>
@@ -94,7 +93,7 @@ export default function LandingPage() {
                           <span className="phone-chip phone-chip-medium">Riesgo medio</span>
                         </div>
                         <div className="phone-feed-meta">
-                          <span>Puerta edificio forzada</span>
+                          <span>Puerta de edificio forzada</span>
                           <span>Hace 6 min</span>
                         </div>
                       </div>
@@ -142,8 +141,8 @@ export default function LandingPage() {
               </div>
 
               <p className="landing-hero-caption">
-                Vista simulada del app ciudadana: reportes geolocalizados, prioridad por riesgo
-                y mapa de calor para el centro de monitoreo.
+                Vista simulada del app ciudadana GUARDIA AI: reportes geolocalizados, mapa de
+                incidentes y priorización automática por riesgo.
               </p>
             </div>
           </div>
@@ -153,32 +152,31 @@ export default function LandingPage() {
         <section style={{ marginTop: "1.8rem" }}>
           <div className="card">
             <div className="card-header">
-              <h2 className="card-title">¿Cómo funciona AlertaVecinal?</h2>
+              <h2 className="card-title">¿Cómo funciona GUARDIA AI?</h2>
               <p className="card-subtitle">
-                Pensado para que cualquier vecino pueda pedir ayuda en segundos y que las autoridades vean todo en un panel unificado.
+                Unimos la mirada del vecino con la inteligencia artificial y el panel del municipio.
               </p>
             </div>
 
             <ul className="contact-benefits">
               <li>
-                <strong>1. El vecino reporta en 10 segundos.</strong> Abre la app, toca “Nuevo
+                <strong>1. El vecino reporta en segundos.</strong> Abre la app, toca “Nuevo
                 reporte”, saca una foto y se envía su ubicación automática.
               </li>
               <li>
-                <strong>2. La IA prioriza por riesgo.</strong> Analizamos la evidencia (texto,
-                imagen, patente) y clasificamos como riesgo alto, medio o bajo.
+                <strong>2. La IA analiza y prioriza el riesgo.</strong> Detectamos patrones,
+                armas, patentes y contexto para marcar riesgo alto, medio o bajo.
               </li>
               <li>
-                <strong>3. El municipio ve todo en un mapa de incidentes.</strong> El panel para
-                autoridades muestra un mapa en vivo, tabla de casos, filtros por zona y por
-                reincidencia de patentes.
+                <strong>3. El centro de monitoreo actúa mejor.</strong> El panel de autoridades
+                muestra mapa de incidentes, tabla de casos, reincidencia de patentes y rutas de escape reportadas.
               </li>
             </ul>
           </div>
         </section>
 
-        {/* SECCIÓN: PARA VECINOS Y MUNICIPIOS */}
-        <section style={{ marginTop: "1.6rem" }}>
+        {/* SECCIÓN: PARA QUIÉN ES */}
+        <section style={{ marginTop: "1.6rem", marginBottom: "1.6rem" }}>
           <div className="directory-layout">
             {/* Para vecinos */}
             <div className="card">
@@ -186,14 +184,14 @@ export default function LandingPage() {
                 <h2 className="card-title">Para vecinos y barrios</h2>
               </div>
               <p className="muted">
-                Pensado para que tu comunidad tenga una única app para emergencias, sospechas
-                y comunicación rápida.
+                Una app simple para que tu comunidad pueda avisar de robos, sospechas o emergencias,
+                con fotos y geolocalización precisa.
               </p>
               <ul className="contact-benefits">
-                <li>Reportes con foto, ubicación y descripción en segundos.</li>
-                <li>Alertas cercanas para saber qué pasa en tu zona ahora mismo.</li>
-                <li>Botón de pánico para emergencias críticas.</li>
-                <li>Registro de patentes sospechosas y rutas de escape.</li>
+                <li>Reportes con foto, descripción y ubicación automática.</li>
+                <li>Alertas cercanas para saber qué pasa a tu alrededor.</li>
+                <li>Botón de pánico con modo bajo coerción.</li>
+                <li>Registro de patentes y rutas de escape para ayudar a identificar reincidencias.</li>
               </ul>
             </div>
 
@@ -203,14 +201,14 @@ export default function LandingPage() {
                 <h2 className="card-title">Para municipios y centros de monitoreo</h2>
               </div>
               <p className="muted">
-                Una capa de inteligencia arriba de los llamados al 911: consolidamos la mirada
-                del barrio en un panel profesional.
+                Una capa de inteligencia sobre el 911: consolidamos la información del barrio
+                en un panel accionable para tu equipo.
               </p>
               <ul className="contact-benefits">
                 <li>Mapa de incidentes en vivo para patrullaje inteligente.</li>
-                <li>Panel con filtros por riesgo, estado, zona y patente.</li>
-                <li>Historial de casos para detectar puntos calientes y reincidencia.</li>
-                <li>Listo para pilotos rápidos en 1 o varios barrios de tu ciudad.</li>
+                <li>Filtros por riesgo, estado, zona y patente reincidente.</li>
+                <li>Historial para detectar puntos calientes y horarios críticos.</li>
+                <li>Ideal para pilotos rápidos en 1 o varios barrios de tu ciudad.</li>
               </ul>
               <div style={{ marginTop: "0.6rem" }}>
                 <Link to="/admin" className="btn btn-secondary">
