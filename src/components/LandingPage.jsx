@@ -1,172 +1,156 @@
 // src/components/LandingPage.jsx
-import React from 'react'
-import { Link } from 'react-router-dom'
-import PhoneMock from './PhoneMock'
+import React from "react"
+import { Link } from "react-router-dom"
 
 export default function LandingPage() {
   return (
-    <div className="landing">
+    <main className="landing">
       <div className="landing-shell">
         {/* HERO PRINCIPAL */}
         <section className="landing-hero">
           <div className="landing-hero-grid">
-            {/* Texto principal orientado a inversores */}
+            {/* Lado izquierdo: texto */}
             <div className="landing-hero-text">
               <h1>ALERTAVECINAL</h1>
-              <h2>Seguridad colaborativa con IA para ciudades, barrios e industrias.</h2>
-
+              <h2>Seguridad colaborativa, en tiempo real.</h2>
               <p className="landing-hero-lead">
-                Plataforma que combina reportes ciudadanos, análisis de riesgo con IA, mapa vivo de
-                incidentes y un módulo HSEQ+ para plantas industriales y empresas. Listo para
-                pilotos reales con municipios y sector privado.
+                Tu barrio conectado a una red de emergencias inteligente:
+                reportes geolocalizados, IA para priorizar riesgo y panel
+                especial para municipios y fuerzas de seguridad.
               </p>
 
               <div className="landing-hero-actions">
                 <Link to="/app" className="btn btn-primary">
-                  Probar demo ciudadana
+                  Abrir app ciudadana
                 </Link>
-                <Link to="/admin" className="btn btn-outline">
-                  Ver panel de autoridades
+                <Link to="/admin" className="btn btn-secondary">
+                  Panel para autoridades
                 </Link>
               </div>
 
-              <Link to="/hseq" className="landing-hero-link">
-                Ver solución HSEQ+ para empresas
-              </Link>
-
               <p className="landing-hero-note">
-                MVP v3.0 — pensado para municipios, fuerzas de seguridad, consorcios, barrios
-                privados, refinerías y plantas industriales que necesitan trazabilidad de
-                incidentes en tiempo real.
+                Demo en vivo · ideal para municipios, comisarías y centros de monitoreo.
               </p>
+
+              <div className="landing-feature-row">
+                <div className="landing-feature-pill">
+                  <span className="pill-icon">🧠</span>
+                  IA para clasificar riesgo
+                </div>
+                <div className="landing-feature-pill">
+                  <span className="pill-icon">📍</span>
+                  Reportes con ubicación precisa
+                </div>
+                <div className="landing-feature-pill">
+                  <span className="pill-icon">🚨</span>
+                  Botón de pánico ciudadano
+                </div>
+                <div className="landing-feature-pill">
+                  <span className="pill-icon">🗺️</span>
+                  Mapa de incidentes en vivo
+                </div>
+              </div>
             </div>
 
-            {/* Mockup del celular (tu componente actual) */}
+            {/* Lado derecho: mockup teléfono */}
             <div className="landing-hero-mockup">
-              <PhoneMock />
+              <div className="phone-mockup">
+                <div className="phone-frame">
+                  <div className="phone-notch" />
+                  <div className="phone-screen">
+                    {/* Status superior */}
+                    <div className="phone-status-bar">
+                      <div className="phone-status-title">ALERTAS EN VIVO</div>
+                      <div className="phone-status-meta">Barrio Demo · 21:37</div>
+                    </div>
+
+                    {/* Alerta principal */}
+                    <div className="phone-alert-card">
+                      <div className="phone-alert-header">
+                        <span className="phone-alert-type">Robo en progreso</span>
+                        <span className="phone-chip phone-chip-high">Riesgo alto</span>
+                      </div>
+                      <p className="phone-alert-text">
+                        Moto roja, 2 personas, arma a la vista. Último reporte a 150 m.
+                      </p>
+                      <div className="phone-alert-meta">
+                        <span>Hace 2 min</span>
+                        <span>3 reportes ciudadanos</span>
+                      </div>
+                    </div>
+
+                    {/* Mini mapa / heatmap */}
+                    <div className="phone-map-preview">
+                      <div className="phone-heat-dot phone-heat-dot-1" />
+                      <div className="phone-heat-dot phone-heat-dot-2" />
+                      <div className="phone-heat-dot phone-heat-dot-3" />
+                    </div>
+
+                    {/* Feed de otras alertas */}
+                    <div className="phone-feed">
+                      <div className="phone-feed-item">
+                        <div className="phone-feed-main">
+                          <div className="phone-feed-title">Persona sospechosa</div>
+                          <span className="phone-chip phone-chip-medium">Riesgo medio</span>
+                        </div>
+                        <div className="phone-feed-meta">
+                          <span>Puerta edificio forzada</span>
+                          <span>Hace 6 min</span>
+                        </div>
+                      </div>
+
+                      <div className="phone-feed-item">
+                        <div className="phone-feed-main">
+                          <div className="phone-feed-title">Ruidos de disparos</div>
+                          <span className="phone-chip phone-chip-high">Riesgo alto</span>
+                        </div>
+                        <div className="phone-feed-meta">
+                          <span>Vecinos confirman</span>
+                          <span>Hace 11 min</span>
+                        </div>
+                      </div>
+
+                      <div className="phone-feed-item">
+                        <div className="phone-feed-main">
+                          <div className="phone-feed-title">Vehículo sospechoso</div>
+                          <span className="phone-chip phone-chip-low">Riesgo bajo</span>
+                        </div>
+                        <div className="phone-feed-meta">
+                          <span>Patente registrada</span>
+                          <span>Hace 18 min</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Acciones inferiores */}
+                    <div className="phone-actions-row">
+                      <button type="button" className="phone-action-btn">
+                        <span className="phone-action-icon">📸</span>
+                        <span className="phone-action-label">Nuevo reporte</span>
+                      </button>
+                      <button type="button" className="phone-action-btn">
+                        <span className="phone-action-icon">📍</span>
+                        <span className="phone-action-label">Alertas cercanas</span>
+                      </button>
+                      <button type="button" className="phone-action-btn">
+                        <span className="phone-action-icon">🚨</span>
+                        <span className="phone-action-label">Botón de pánico</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <p className="landing-hero-caption">
-                Vista simulada de la app: reportes en segundos, lectura de patentes, botón de
-                pánico, mapa de calor y rutas de escape registradas.
+                Vista simulada del app ciudadana: reportes geolocalizados, prioridad por riesgo
+                y mapa de calor para el centro de monitoreo.
               </p>
             </div>
           </div>
         </section>
 
-        {/* QUÉ ES LA PLATAFORMA – foco producto */}
-        <section className="landing-section">
-          <h2 className="landing-subtitle">¿Qué es AlertaVecinal?</h2>
-          <div className="landing-grid">
-            <div className="landing-card">
-              <h3>App ciudadana</h3>
-              <p>
-                Vecinos que reportan robos, violencia, personas o vehículos sospechosos y emergencias
-                con foto, ubicación automática y descripción breve. Pensado para usarse en segundos,
-                bajo estrés.
-              </p>
-            </div>
-
-            <div className="landing-card">
-              <h3>Panel de autoridades</h3>
-              <p>
-                Dashboard web con listado de incidentes, nivel de riesgo, lectura de patente,
-                geolocalización, evidencia y estado de cada caso. Incluye mapa táctico y rutas de
-                escape asociadas a cada reporte.
-              </p>
-            </div>
-
-            <div className="landing-card">
-              <h3>Módulo HSEQ+ para empresas</h3>
-              <p>
-                Extensión para industrias y refinerías: reportes de incidentes en planta, botón de
-                pánico para operarios, clasificación por tipo de evento y mapas de riesgo para
-                seguridad industrial y medioambiente.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* CÓMO FUNCIONA – simple y claro */}
-        <section className="landing-section">
-          <h2 className="landing-subtitle">¿Cómo funciona AlertaVecinal?</h2>
-          <ol className="landing-howto">
-            <li>
-              <strong>El ciudadano u operario reporta en 3 segundos.</strong> Toma una foto, la app
-              captura la ubicación automática y añade una descripción corta del incidente.
-            </li>
-            <li>
-              <strong>La IA analiza y clasifica el riesgo.</strong> Detecta patrones de robo,
-              violencia, presencia de armas y vehículos para marcar el incidente como alto, medio o
-              bajo.
-            </li>
-            <li>
-              <strong>El mapa se actualiza en tiempo real.</strong> Los incidentes aparecen con
-              pines de colores, zonas calientes y rutas de escape registradas para cada reporte.
-            </li>
-            <li>
-              <strong>Las autoridades priorizan y actúan.</strong> Ven riesgo, distancia, patente,
-              evidencia y ubicación exacta, optimizando patrullaje, respuesta y seguimiento.
-            </li>
-          </ol>
-        </section>
-
-        {/* PARA QUIÉN ES – segmentos para el pitch */}
-        <section className="landing-section">
-          <h2 className="landing-subtitle">¿Para quién es AlertaVecinal?</h2>
-          <div className="landing-grid">
-            <div className="landing-card">
-              <h3>Municipios y fuerzas de seguridad</h3>
-              <p>
-                Centralizan reportes de vecinos, identifican zonas de mayor riesgo, coordinan
-                patrullajes y mejoran tiempos de respuesta con datos en tiempo real.
-              </p>
-            </div>
-
-            <div className="landing-card">
-              <h3>Barrios, consorcios y countries</h3>
-              <p>
-                Comunidad conectada: vecinos que reportan lo que ven, seguridad privada con panel
-                único y registro histórico de incidentes por edificio, torre o manzana.
-              </p>
-            </div>
-
-            <div className="landing-card">
-              <h3>Empresas, refinerías e industrias</h3>
-              <p>
-                Gestión unificada de incidentes de seguridad y HSEQ: reportes en planta, plan de
-                respuesta, mapa de riesgo por sector y evidencia organizada para auditorías y
-                compliance.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA FINAL – modo demo / piloto */}
-        <section className="landing-section landing-demo">
-          <h3>Ver la plataforma en acción</h3>
-          <p>
-            Probá la app desde el lado del ciudadano, explorá el panel de autoridades y mirá el
-            módulo HSEQ+ para ver cómo se adapta tanto a ciudades como a entornos industriales.
-          </p>
-          <div className="landing-hero-actions">
-            <Link to="/app" className="btn btn-primary">
-              Abrir demo ciudadana
-            </Link>
-            <Link to="/admin/mapa" className="btn btn-outline">
-              Ver mapa de incidentes
-            </Link>
-            <Link to="/hseq" className="btn btn-outline">
-              Ver módulo HSEQ+
-            </Link>
-          </div>
-        </section>
-
-        <footer className="landing-footer">
-          <p>
-            AlertaVecinal · MVP v3.0 · IA + geolocalización · Listo para pilotos reales en Argentina
-            y LatAm.
-          </p>
-        </footer>
+        {/* Acá después podemos sumar secciones tipo “para Municipios”, “para Barrios”, etc. */}
       </div>
-    </div>
+    </main>
   )
 }
