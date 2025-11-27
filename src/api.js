@@ -1,7 +1,7 @@
 // src/api.js
 
 // Base de la API (env o prod)
-export const API_BASE = "https://inherent-fredericka-serranolash-9cdc1cc1.koyeb.app/";
+export const API_BASE = "https://normal-dreddy-semalav-0e2991d2.koyeb.app";
 
 // Función genérica para pedir a la API
 async function request(path, options = {}) {
